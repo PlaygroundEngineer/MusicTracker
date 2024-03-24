@@ -6,12 +6,15 @@ struct WriteView: View {
     @State private var notes: String = ""
     
     var body: some View {
+        Color(hex: CustomColors.cream, opacity: 1)
+            .edgesIgnoringSafeArea(.all) // ignore safe area to fill entire screen
+            .overlay(
         GeometryReader { geometry in
             ZStack {
                 // Brown background rectangle
                 Rectangle()
                     .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
-                    .frame(width: UIScreen.width * 0.25, height: UIScreen.height * 0.4, alignment: .center)
+                    .frame(width: UIScreen.width * 0.9, height: UIScreen.height * 0.5, alignment: .center)
                 
                 VStack(spacing: 1) {
                     Spacer()
@@ -90,6 +93,7 @@ struct WriteView: View {
                 .offset(y: -UIScreen.height * 0.17)
             }
         }
+        )
     }
 }
 
