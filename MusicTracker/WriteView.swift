@@ -4,6 +4,8 @@ struct WriteView: View {
     @State private var songTitle: String = ""
     @State private var feedback: String = ""
     @State private var notes: String = ""
+    @State private var selectedImage: UIImage?
+    @State private var isImagePickerPresented: Bool = false
     
     var body: some View {
         Color(hex: CustomColors.cream, opacity: 1)
@@ -40,9 +42,17 @@ struct WriteView: View {
                             Circle()
                                 .frame(width: 25)
                                 .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            Image(systemName: "camera")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
+                            Button(action: {
+                                isImagePickerPresented.toggle()
+                            }) {
+                                Image(systemName: "camera")
+                                    .font(.system(size: 10))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(4)
+                            .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
+                                ImagePicker(selectedImage: $selectedImage)
+                            }
                         }
                         
                         ZStack {
@@ -95,6 +105,13 @@ struct WriteView: View {
         }
         )
     }
+    
+    func loadImage() {
+        guard let selectedImage = selectedImage else {
+            return
+        }
+        self.selectedImage = selectedImage
+    }
 }
 
 struct TextEditorWithPlaceholder: View {
@@ -102,7 +119,7 @@ struct TextEditorWithPlaceholder: View {
     var placeholder: String
     
     var body: some View {
-        ZStack() {
+        ZStack(alignment: .bottom) {
             if text.isEmpty {
                 Text(placeholder)
                     .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
@@ -115,11 +132,13 @@ struct TextEditorWithPlaceholder: View {
                         .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
                 )
                 .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
-                .padding(8)
+            //.padding(8)
             
             Rectangle()
-                .frame(width: UIScreen.width * 0.207, height: 3)
+                .frame(width: UIScreen.width * 0.207, height: 5)
                 .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
         }
+        .padding(8)
     }
 }
+
