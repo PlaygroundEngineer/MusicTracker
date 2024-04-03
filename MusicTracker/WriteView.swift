@@ -6,104 +6,123 @@ struct WriteView: View {
     @State private var notes: String = ""
     @State private var selectedImage: UIImage?
     @State private var isImagePickerPresented: Bool = false
+    @State private var isPlaying: Bool = false
+    @State private var timer: Timer? = nil
+    @State private var elapsedTime: TimeInterval = 0
+    @State private var customText: String = ""
     
     var body: some View {
         Color(hex: CustomColors.cream, opacity: 1)
-            .edgesIgnoringSafeArea(.all) // ignore safe area to fill entire screen
+            .edgesIgnoringSafeArea(.all)
             .overlay(
-        GeometryReader { geometry in
-            ZStack {
-                // Brown background rectangle
-                Rectangle()
-                    .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
-                    .frame(width: UIScreen.width * 0.9, height: UIScreen.height * 0.5, alignment: .center)
-                
-                VStack(spacing: 1) {
-                    Spacer()
-                    Text("journey")
-                        .font(.system(size: 40))
-                    Text("FURTHER")
-                        .font(.system(size: 50))
-                    
-                    // Song Title Text Editor
-                    TextEditorWithPlaceholder(text: $songTitle, placeholder: "Type your song...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.06)
-                    
-                    // Feedback Text Editor
-                    TextEditorWithPlaceholder(text: $feedback, placeholder: "Type your practice...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
-                    
-                    // Notes Text Editor
-                    TextEditorWithPlaceholder(text: $notes, placeholder: "Type your feedback...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
-                    
-                    HStack {
-                        ZStack {
-                            Circle()
-                                .frame(width: 25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            Button(action: {
-                                isImagePickerPresented.toggle()
-                            }) {
-                                Image(systemName: "camera")
-                                    .font(.system(size: 10))
-                                    .foregroundColor(Color.white)
-                            }
-                            .padding(4)
-                            .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
-                                ImagePicker(selectedImage: $selectedImage)
-                            }
-                        }
+                GeometryReader { geometry in
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
+                            .frame(width: UIScreen.width * 0.9, height: UIScreen.height * 0.5, alignment: .center)
                         
-                        ZStack {
-                            Circle()
-                                .frame(width: 25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            Image(systemName: "calendar")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
-                        }
-                        
-                        ZStack(alignment: .leading) {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 110, height: 25)
-                                    .cornerRadius(25)
-                                    .foregroundColor(Color.white)
+                        VStack(spacing: 1) {
+                            Spacer()
+                            Text("journey")
+                                .font(.system(size: 40))
+                            Text("FURTHER")
+                                .font(.system(size: 50))
+                            
+                            TextEditorWithPlaceholder(text: $songTitle, placeholder: "Type your song...")
+                                .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.06)
+                            
+                            TextEditorWithPlaceholder(text: $feedback, placeholder: "Type your practice...")
+                                .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
+                            
+                            TextEditorWithPlaceholder(text: $notes, placeholder: "Type your feedback...")
+                                .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
+                            
+                            HStack {
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 25)
+                                        .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+                                    Button(action: {
+                                        isImagePickerPresented.toggle()
+                                    }) {
+                                        Image(systemName: "camera")
+                                            .font(.system(size: 10))
+                                            .foregroundColor(Color.white)
+                                    }
+                                    .padding(4)
+                                    .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
+                                        ImagePicker(selectedImage: $selectedImage)
+                                    }
+                                }
+                                ZStack {
+                                    Circle()
+                                        .frame(width: 25)
+                                        .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+                                    Image(systemName: "calendar")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(Color.white)
+                                }
                                 
-                                Text("  25 minutes")
-                                    .font(.system(size: 10))
-                            }
-                            
-                            ZStack {
-                                Circle()
-                                    .frame(width: 25)
-                                    .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                                Image(systemName: "play.fill")
-                                    .font(.system(size: 10))
-                                    .foregroundColor(Color.white)
+                                ZStack(alignment: .leading) {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: 25)
+                                            .frame(width: 110, height: 25)
+                                            .foregroundColor(Color.white)
+                                        
+                                        if isPlaying {
+                                            Text("\(Int(elapsedTime)) seconds")
+                                                .foregroundColor(.black)
+                                                .padding(.horizontal) // Add horizontal padding
+                                                .frame(width: 85, height: 40) // Fixed width
+                                                .font(.system(size: 10))
+                                        } else {
+                                            TextField("Type here", text: $customText)
+                                                .foregroundColor(.black)
+                                                .padding(.horizontal) // Add horizontal padding
+                                                .frame(width: 85, height: 40) // Fixed width
+                                                .font(.system(size: 10))
+                                                
+                                        }
+                                    }
+                                    
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 25)
+                                            .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+                                        
+                                        Button(action: {
+                                            if isPlaying {
+                                                stopTimer()
+                                            } else {
+                                                startTimer()
+                                            }
+                                            isPlaying.toggle()
+                                        }) {
+                                            Image(systemName: isPlaying ? "stop.fill" : "play.fill")
+                                                .font(.system(size: 10))
+                                                .foregroundColor(Color.white)
+                                    }
+                                }
+                                }
+                                
+                                ZStack(alignment: .trailing) {
+                                   /* Rectangle()
+                                        .frame(width: 60, height: 25)
+                                        .cornerRadius(25)
+                                        .foregroundColor(Color(hex: CustomColors.black, opacity: 1))*/
+                                    
+                                    Text("Add ->")
+                                        .font(.system(size: 10))
+                                        .foregroundColor(Color.white)
+                                }
                             }
                         }
-                        
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 60, height: 25)
-                                .cornerRadius(25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            
-                            Text("Add ->")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
-                        }
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .offset(y: -UIScreen.height * 0.17)
                     }
-                    .padding(8)
                 }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .center)
-                .offset(y: -UIScreen.height * 0.17)
-            }
-        }
-        )
+            )
     }
     
     func loadImage() {
@@ -111,6 +130,19 @@ struct WriteView: View {
             return
         }
         self.selectedImage = selectedImage
+    }
+    
+    func startTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            elapsedTime += 1
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+        elapsedTime = 0
     }
 }
 
@@ -132,7 +164,6 @@ struct TextEditorWithPlaceholder: View {
                         .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
                 )
                 .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
-            //.padding(8)
             
             Rectangle()
                 .frame(width: UIScreen.width * 0.207, height: 5)
@@ -142,3 +173,9 @@ struct TextEditorWithPlaceholder: View {
     }
 }
 
+struct WriteView_Previews: PreviewProvider {
+    static var previews: some View {
+        WriteView()
+    }
+}
+ 
