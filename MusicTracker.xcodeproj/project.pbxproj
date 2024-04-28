@@ -20,6 +20,9 @@
 		5FD682CC2B4B3B990044D5F2 /* MusicTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD682CB2B4B3B990044D5F2 /* MusicTrackerTests.swift */; };
 		5FD682D62B4B3B990044D5F2 /* MusicTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD682D52B4B3B990044D5F2 /* MusicTrackerUITests.swift */; };
 		5FD682D82B4B3B990044D5F2 /* MusicTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD682D72B4B3B990044D5F2 /* MusicTrackerUITestsLaunchTests.swift */; };
+		5FD7C3772BDED9E20024A593 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7C3742BDED9E10024A593 /* PracticeView.swift */; };
+		5FD7C3782BDED9E20024A593 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7C3752BDED9E10024A593 /* TaskView.swift */; };
+		5FD7C3792BDED9E20024A593 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7C3762BDED9E20024A593 /* CustomTextEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		5FD682D12B4B3B990044D5F2 /* MusicTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD682D52B4B3B990044D5F2 /* MusicTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTrackerUITests.swift; sourceTree = "<group>"; };
 		5FD682D72B4B3B990044D5F2 /* MusicTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5FD7C3742BDED9E10024A593 /* PracticeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
+		5FD7C3752BDED9E10024A593 /* TaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		5FD7C3762BDED9E20024A593 /* CustomTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 		5FD682B92B4B3B970044D5F2 /* MusicTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5FD7C3762BDED9E20024A593 /* CustomTextEditor.swift */,
+				5FD7C3742BDED9E10024A593 /* PracticeView.swift */,
+				5FD7C3752BDED9E10024A593 /* TaskView.swift */,
 				5FD682BA2B4B3B970044D5F2 /* MusicTrackerApp.swift */,
 				5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */,
 				5F1299002BB0ACEC002B0EFB /* ContentViewWithTimer.swift */,
@@ -278,10 +287,13 @@
 				5F12990C2BB0ACF9002B0EFB /* WriteView.swift in Sources */,
 				5F1299052BB0ACEC002B0EFB /* ContentViewWithTimer.swift in Sources */,
 				5FD682BB2B4B3B970044D5F2 /* MusicTrackerApp.swift in Sources */,
+				5FD7C3782BDED9E20024A593 /* TaskView.swift in Sources */,
 				5F12990D2BB0ACF9002B0EFB /* TabContentView.swift in Sources */,
 				5F1299062BB0ACEC002B0EFB /* Helpers.swift in Sources */,
 				5F1299082BB0ACEC002B0EFB /* MusicTrackerApp.swift in Sources */,
 				5F1299092BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift in Sources */,
+				5FD7C3772BDED9E20024A593 /* PracticeView.swift in Sources */,
+				5FD7C3792BDED9E20024A593 /* CustomTextEditor.swift in Sources */,
 				5F1299072BB0ACEC002B0EFB /* ImagePickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
