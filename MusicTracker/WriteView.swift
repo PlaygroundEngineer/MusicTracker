@@ -6,89 +6,45 @@ struct WriteView: View {
     @State private var notes: String = ""
     
     var body: some View {
-        
         GeometryReader { geometry in
-            ZStack {
-                // Brown background rectangle
-                Rectangle()
-                    .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
-                    .frame(width: UIScreen.width * 0.25, height: UIScreen.height * 0.4, alignment: .center)
+            // Brown background rectangle
+            VStack(spacing: 1) {
+                Spacer()
+                Text("journey")
+                    .font(.system(size: 40))
+                Text("FURTHER")
+                    .font(.system(size: 50))
+                    .zIndex(1)
                 
-                VStack(spacing: 1) {
-                    Spacer()
-                    Text("journey")
-                        .font(.system(size: 40))
-                    Text("FURTHER")
-                        .font(.system(size: 50))
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
+                        .frame(width: UIScreen.width * 0.9, alignment: .center)
+                        .offset(y: -25)
+                        .zIndex(0)
                     
-                    // Song Title Text Editor
-                    TextEditorWithPlaceholder(text: $songTitle, placeholder: "Type your song...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.06)
-                    
-                    // Feedback Text Editor
-                    TextEditorWithPlaceholder(text: $feedback, placeholder: "Type your practice...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
-                    
-                    // Notes Text Editor
-                    TextEditorWithPlaceholder(text: $notes, placeholder: "Type your feedback...")
-                        .frame(width: UIScreen.width * 0.22, height: UIScreen.height * 0.12)
-                    
-                    HStack {
-                        ZStack {
-                            Circle()
-                                .frame(width: 25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            Image(systemName: "camera")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
-                        }
+                    VStack {
+                        // Song Title Text Editor
+                        TextEditorWithPlaceholder(text: $songTitle, placeholder: "Type your song...")
+                            .frame(width: UIScreen.width * 0.84)
                         
-                        ZStack {
-                            Circle()
-                                .frame(width: 25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            Image(systemName: "calendar")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
-                        }
+                        // Feedback Text Editor
+                        TextEditorWithPlaceholder(text: $feedback, placeholder: "Type your practice...")
+                            .frame(width: UIScreen.width * 0.84)
                         
-                        ZStack(alignment: .leading) {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 110, height: 25)
-                                    .cornerRadius(25)
-                                    .foregroundColor(Color.white)
-                                
-                                Text("  25 minutes")
-                                    .font(.system(size: 10))
-                            }
-                            
-                            ZStack {
-                                Circle()
-                                    .frame(width: 25)
-                                    .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                                Image(systemName: "play.fill")
-                                    .font(.system(size: 10))
-                                    .foregroundColor(Color.white)
-                            }
-                        }
-                        
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 60, height: 25)
-                                .cornerRadius(25)
-                                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-                            
-                            Text("Add ->")
-                                .font(.system(size: 10))
-                                .foregroundColor(Color.white)
-                        }
+                        // Notes Text Editor
+                        TextEditorWithPlaceholder(text: $notes, placeholder: "Type your feedback...")
+                            .frame(width: UIScreen.width * 0.84)
+                        TaskView()
                     }
+                    
+                    
+                    
                     .padding(8)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .center)
-                //.offset(y: -UIScreen.height * 0.17)
+                //.offset(y: UIScreen.height * 0.10)
             }
         }
     }
@@ -115,11 +71,10 @@ struct TextEditorWithPlaceholder: View {
             //.padding(8)
             
             Rectangle()
-                .frame(width: UIScreen.width * 0.207, height: 5)
+                .frame(width: UIScreen.width * 0.84, height: 5)
                 .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
         }
         .padding(8)
     }
 }
 
- 
