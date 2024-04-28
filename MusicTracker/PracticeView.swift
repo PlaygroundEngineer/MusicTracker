@@ -2,54 +2,59 @@ import SwiftUI
 
 struct PracticeView: View {
     @State private var elapsedTime: TimeInterval = 0
-    @State private var songTitle: String = ""
-    @State private var selectedImage: UIImage?
     
-    let boxData: [(Color, String, TimeInterval)] = [
-        (.blue, "Box 1", 0),
-        (.green, "Box 2", 0),
-        (.orange, "Box 3", 0),
-        (.red, "Box 4", 0),
-        (.yellow, "Box 5", 0),
-        (.purple, "Box 6", 0)
+    let cardData: [(
+        color: Color, body: String, icon: String, duration: String, date: String
+    )] = [
+        (color: (Color(hex: CustomColors.yellow, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
+        (color: (Color(hex: CustomColors.blue, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
+        (color: (Color(hex: CustomColors.green, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
+        (color: (Color(hex: CustomColors.pink, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
+        (color: (Color(hex: CustomColors.blue, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
+        (color: (Color(hex: CustomColors.yellow, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
+        // ... your card data
     ]
-    
     var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 10) {
-                ForEach(boxData.indices, id: \.self) { index in
-                    if index % 2 == 0 {
-                        HStack(spacing: 10) {
-                            self.createBox(index: index, width: (geometry.size.width - 10) / 2)
-                            if index + 1 < self.boxData.count {
-                                self.createBox(index: index + 1, width: (geometry.size.width - 10) / 2)
-                            } else {
-                                Spacer()
-                            }
+        ScrollView {
+            let columns = [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+            ]
+            
+            LazyVGrid(columns: columns, spacing: 20) {
+                ForEach(cardData, id: \.body) { data in
+                    VStack {
+                        Spacer() // Push content to center
+                        Text(data.body)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center) // Ensure multiline text is centered
+                        Spacer() // Push content to center
+                        HStack {
+                            Image(systemName: data.icon)
+                                .foregroundColor(.white)
+                            Text(data.duration)
+                                .foregroundColor(.white)
+                            Spacer()
+                            Text(data.date)
+                                .foregroundColor(.white)
                         }
                     }
+                    .padding()
+                    .frame(width: 300, height: 400)
+                    .background(data.color)
+                    .cornerRadius(15)
+                    .shadow(radius: 5)
                 }
             }
-            .padding()
-            
-            }
-        
-    }
-    
-    func createBox(index: Int, width: CGFloat) -> some View {
-        let color = boxData[index].0
-        let text = boxData[index].1
-        let elapsedTime = boxData[index].2 + self.elapsedTime
-        
-        return Rectangle()
-            .fill(color)
-            .frame(width: width, height: 100)
-            .overlay(
-                Text("\(text) - \(Int(elapsedTime)) seconds")
-                    .foregroundColor(.white)
-                    .font(.headline)
-            )
-            .cornerRadius(10)
+            .padding(.horizontal)
+        }
     }
 }
 
+struct PracticeView_Previews: PreviewProvider {
+    static var previews: some View {
+        PracticeView()
+    }
+}
