@@ -44,13 +44,6 @@ struct ImageContentView: View {
         guard let selectedImage = selectedImage else { return }
         self.selectedImage = selectedImage
     }
-
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
 }
 
 struct ImagePicker: UIViewControllerRepresentable {

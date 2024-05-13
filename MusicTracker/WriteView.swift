@@ -1,11 +1,34 @@
 import SwiftUI
+import Combine
+
+public struct PracticeEntry: Identifiable, Codable {
+    public var id = UUID()
+    //var imageData: Data?
+    var date = Date()
+    var duration: Int
+    var songTitle: String
+    var feedback: String
+    var notes: String
+}
+
+class EntryManager: ObservableObject {
+    @Published var entries: [PracticeEntry] = []
+    
+    func saveEntriesToUserDefaults() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(entries) {
+            UserDefaults.standard.set(encoded, forKey: "practiceEntries")
+        }
+    }
+}
 
 struct WriteView: View {
-    @State private var songTitle: String = ""
-    @State private var feedback: String = ""
-    @State private var notes: String = ""
+    @EnvironmentObject var entryManager: EntryManager
+    @State private var newEntry = PracticeEntry(date: Date(), duration: 0, songTitle: "", feedback: "", notes: "")
     
     var body: some View {
+        /*Color(hex: CustomColors.cream, opacity: 1)
+            .edgesIgnoringSafeArea(.all)*/
         GeometryReader { geometry in
             // Brown background rectangle
             VStack(spacing: 1) {
@@ -25,21 +48,18 @@ struct WriteView: View {
                     
                     VStack {
                         // Song Title Text Editor
-                        TextEditorWithPlaceholder(text: $songTitle, placeholder: "Type your song...")
+                        TextEditorWithPlaceholder(text: $newEntry.songTitle, placeholder: "Type your song...")
                             .frame(width: UIScreen.width * 0.84)
                         
                         // Feedback Text Editor
-                        TextEditorWithPlaceholder(text: $feedback, placeholder: "Type your practice...")
+                        TextEditorWithPlaceholder(text: $newEntry.feedback, placeholder: "Type your practice...")
                             .frame(width: UIScreen.width * 0.84)
                         
                         // Notes Text Editor
-                        TextEditorWithPlaceholder(text: $notes, placeholder: "Type your feedback...")
+                        TextEditorWithPlaceholder(text: $newEntry.notes, placeholder: "Type your feedback...")
                             .frame(width: UIScreen.width * 0.84)
-                        TaskView()
+                        TaskView(newEntry: $newEntry)
                     }
-                    
-                    
-                    
                     .padding(8)
                 }
                 .padding()
@@ -62,7 +82,7 @@ struct TextEditorWithPlaceholder: View {
                     .padding(8)
             }
             
-            CustomTextEditor()
+            CustomTextEditor(text: $text)
                 .background(
                     Rectangle()
                         .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
@@ -77,4 +97,5 @@ struct TextEditorWithPlaceholder: View {
         .padding(8)
     }
 }
+
 

@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F1299052BB0ACEC002B0EFB /* ContentViewWithTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299002BB0ACEC002B0EFB /* ContentViewWithTimer.swift */; };
 		5F1299062BB0ACEC002B0EFB /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299012BB0ACEC002B0EFB /* Helpers.swift */; };
 		5F1299072BB0ACEC002B0EFB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299022BB0ACEC002B0EFB /* ImagePickerView.swift */; };
-		5F1299082BB0ACEC002B0EFB /* MusicTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299032BB0ACEC002B0EFB /* MusicTrackerApp.swift */; };
 		5F1299092BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */; };
 		5F12990C2BB0ACF9002B0EFB /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12990A2BB0ACF9002B0EFB /* WriteView.swift */; };
 		5F12990D2BB0ACF9002B0EFB /* TabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12990B2BB0ACF9002B0EFB /* TabContentView.swift */; };
-		5FD682BB2B4B3B970044D5F2 /* MusicTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD682BA2B4B3B970044D5F2 /* MusicTrackerApp.swift */; };
+		5FACCCE22BF21D74001B4823 /* MusicTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */; };
 		5FD682BF2B4B3B990044D5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FD682BE2B4B3B990044D5F2 /* Assets.xcassets */; };
 		5FD682C22B4B3B990044D5F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FD682C12B4B3B990044D5F2 /* Preview Assets.xcassets */; };
 		5FD682CC2B4B3B990044D5F2 /* MusicTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD682CB2B4B3B990044D5F2 /* MusicTrackerTests.swift */; };
@@ -43,15 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5F1299002BB0ACEC002B0EFB /* ContentViewWithTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewWithTimer.swift; sourceTree = "<group>"; };
 		5F1299012BB0ACEC002B0EFB /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		5F1299022BB0ACEC002B0EFB /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
-		5F1299032BB0ACEC002B0EFB /* MusicTrackerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTrackerApp.swift; sourceTree = "<group>"; };
 		5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewWithoutTimer.swift; sourceTree = "<group>"; };
 		5F12990A2BB0ACF9002B0EFB /* WriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		5F12990B2BB0ACF9002B0EFB /* TabContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabContentView.swift; sourceTree = "<group>"; };
+		5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTrackerApp.swift; sourceTree = "<group>"; };
 		5FD682B72B4B3B970044D5F2 /* MusicTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FD682BA2B4B3B970044D5F2 /* MusicTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicTrackerApp.swift; sourceTree = "<group>"; };
 		5FD682BE2B4B3B990044D5F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FD682C12B4B3B990044D5F2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5FD682C72B4B3B990044D5F2 /* MusicTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,17 +108,15 @@
 		5FD682B92B4B3B970044D5F2 /* MusicTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */,
 				5FD7C3762BDED9E20024A593 /* CustomTextEditor.swift */,
 				5FD7C3742BDED9E10024A593 /* PracticeView.swift */,
 				5FD7C3752BDED9E10024A593 /* TaskView.swift */,
-				5FD682BA2B4B3B970044D5F2 /* MusicTrackerApp.swift */,
 				5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */,
-				5F1299002BB0ACEC002B0EFB /* ContentViewWithTimer.swift */,
 				5F1299012BB0ACEC002B0EFB /* Helpers.swift */,
 				5F12990B2BB0ACF9002B0EFB /* TabContentView.swift */,
 				5F12990A2BB0ACF9002B0EFB /* WriteView.swift */,
 				5F1299022BB0ACEC002B0EFB /* ImagePickerView.swift */,
-				5F1299032BB0ACEC002B0EFB /* MusicTrackerApp.swift */,
 				5FD682BE2B4B3B990044D5F2 /* Assets.xcassets */,
 				5FD682C02B4B3B990044D5F2 /* Preview Content */,
 			);
@@ -285,12 +279,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F12990C2BB0ACF9002B0EFB /* WriteView.swift in Sources */,
-				5F1299052BB0ACEC002B0EFB /* ContentViewWithTimer.swift in Sources */,
-				5FD682BB2B4B3B970044D5F2 /* MusicTrackerApp.swift in Sources */,
 				5FD7C3782BDED9E20024A593 /* TaskView.swift in Sources */,
 				5F12990D2BB0ACF9002B0EFB /* TabContentView.swift in Sources */,
+				5FACCCE22BF21D74001B4823 /* MusicTrackerApp.swift in Sources */,
 				5F1299062BB0ACEC002B0EFB /* Helpers.swift in Sources */,
-				5F1299082BB0ACEC002B0EFB /* MusicTrackerApp.swift in Sources */,
 				5F1299092BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift in Sources */,
 				5FD7C3772BDED9E20024A593 /* PracticeView.swift in Sources */,
 				5FD7C3792BDED9E20024A593 /* CustomTextEditor.swift in Sources */,

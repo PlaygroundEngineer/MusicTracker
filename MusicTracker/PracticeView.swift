@@ -1,5 +1,58 @@
 import SwiftUI
 
+
+struct PracticeView: View {
+    @EnvironmentObject var entryManager: EntryManager
+    var body: some View {
+        List {
+            ForEach(entryManager.entries.reversed()) { entry in
+                VStack(alignment: .leading) {
+                    /*if let imageData = entry.imageData {
+                     let uiImage = UIImage(data: imageData)
+                     Image(uiImage: uiImage)
+                     .resizable()
+                     .aspectRatio(ContentMode: .fit)
+                     .frame(width: 200, height: 200)
+                     }*/
+                    Text("Date: \(entry.date, style: .date)")
+                    Text("Duration: \(entry.duration) minutes")
+                    Text("Song Title: \(entry.songTitle)")
+                    Text("Feedback: \(entry.feedback)")
+                    Text("Notes: \(entry.notes)")
+                }
+                .padding()
+                .cornerRadius(10)
+            }
+        }
+    }
+}
+/*
+struct PracticeView: View {
+    @EnvironmentObject var entryManager: EntryManager
+    var body: some View {
+        List {
+            ForEach(entryManager.entries.reversed()) { entry in
+                VStack(alignment: .leading) {
+                    /*if let imageData = entry.imageData {
+                        let uiImage = UIImage(data: imageData)
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(ContentMode: .fit)
+                            .frame(width: 200, height: 200)
+                    }*/
+                    Text("Date: \(entry.date, style: .date)")
+                    Text("Duration: \(entry.duration) minutes")
+                    Text("Song Title: \(entry.songTitle)")
+                    Text("Feedback: \(entry.feedback)")
+                    Text("Notes: \(entry.notes)")
+                }
+                .padding()
+                .cornerRadius(10)
+            }
+        }
+    }*/
+
+ /*
 struct PracticeView: View {
     @State private var elapsedTime: TimeInterval = 0
     
@@ -58,3 +111,4 @@ struct PracticeView_Previews: PreviewProvider {
         PracticeView()
     }
 }
+*/

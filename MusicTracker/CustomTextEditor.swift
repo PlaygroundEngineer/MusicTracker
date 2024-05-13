@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct CustomTextEditor: View {
-    @State var text = ""
+    @Binding var text: String
     @State private var isSheetPresented = false
     
     
