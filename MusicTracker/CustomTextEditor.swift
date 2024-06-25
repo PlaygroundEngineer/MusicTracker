@@ -4,11 +4,12 @@ import SwiftUI
 struct CustomTextEditor: View {
     @Binding var text: String
     @State private var isSheetPresented = false
+    var placeholder: String
     
     
     var body: some View {
         VStack {
-            TextField("Enter your text", text: $text)
+            TextField(placeholder, text: $text)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onTapGesture {
@@ -39,6 +40,7 @@ struct EditSheet: View {
         .padding()
     }
 }
+
 
 
 
