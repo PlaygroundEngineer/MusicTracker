@@ -1,114 +1,71 @@
 import SwiftUI
 
-
 struct PracticeView: View {
-    @EnvironmentObject var entryManager: EntryManager
-    var body: some View {
-        List {
-            ForEach(entryManager.entries.reversed()) { entry in
-                VStack(alignment: .leading) {
-                    /*if let imageData = entry.imageData {
-                     let uiImage = UIImage(data: imageData)
-                     Image(uiImage: uiImage)
-                     .resizable()
-                     .aspectRatio(ContentMode: .fit)
-                     .frame(width: 200, height: 200)
-                     }*/
-                    Text("Date: \(entry.date, style: .date)")
-                    Text("Duration: \(entry.duration) minutes")
-                    Text("Song Title: \(entry.songTitle)")
-                    Text("Feedback: \(entry.feedback)")
-                    Text("Notes: \(entry.notes)")
-                }
-                .padding()
-                .cornerRadius(10)
-            }
-        }
-    }
-}
-/*
-struct PracticeView: View {
-    @EnvironmentObject var entryManager: EntryManager
-    var body: some View {
-        List {
-            ForEach(entryManager.entries.reversed()) { entry in
-                VStack(alignment: .leading) {
-                    /*if let imageData = entry.imageData {
-                        let uiImage = UIImage(data: imageData)
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(ContentMode: .fit)
-                            .frame(width: 200, height: 200)
-                    }*/
-                    Text("Date: \(entry.date, style: .date)")
-                    Text("Duration: \(entry.duration) minutes")
-                    Text("Song Title: \(entry.songTitle)")
-                    Text("Feedback: \(entry.feedback)")
-                    Text("Notes: \(entry.notes)")
-                }
-                .padding()
-                .cornerRadius(10)
-            }
-        }
-    }*/
-
- /*
-struct PracticeView: View {
-    @State private var elapsedTime: TimeInterval = 0
+    @ObservedObject var entryManager: EntryManager
     
-    let cardData: [(
-        color: Color, body: String, icon: String, duration: String, date: String
-    )] = [
-        (color: (Color(hex: CustomColors.yellow, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
-        (color: (Color(hex: CustomColors.blue, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
-        (color: (Color(hex: CustomColors.green, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
-        (color: (Color(hex: CustomColors.pink, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
-        (color: (Color(hex: CustomColors.blue, opacity: 1)), body: "I got straight A’s this semester", icon: "timer", duration: "20 minutes", date: "12/16/23"),
-        (color: (Color(hex: CustomColors.yellow, opacity: 1)), body: "I decluttered my closet", icon: "timer", duration: "45 minutes", date: "6/25/23"),
-        // ... your card data
-    ]
     var body: some View {
         ScrollView {
             let columns = [
-                GridItem(.flexible()),
-                GridItem(.flexible())
+                GridItem(.adaptive(minimum: 160))
             ]
             
             LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(cardData, id: \.body) { data in
-                    VStack {
-                        Spacer() // Push content to center
-                        Text(data.body)
+                ForEach(entryManager.entries) { entry in
+                    VStack(spacing: 8) {
+                        Text(entry.songTitle)
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
-                            .multilineTextAlignment(.center) // Ensure multiline text is centered
-                        Spacer() // Push content to center
+                            .multilineTextAlignment(.center)
+                        
                         HStack {
-                            Image(systemName: data.icon)
+                            Image(systemName: "timer")
                                 .foregroundColor(.white)
-                            Text(data.duration)
+                                .font(.title2)
+                            
+                            Text("\(entry.duration) minutes")
                                 .foregroundColor(.white)
+                                .font(.subheadline)
+                            
                             Spacer()
-                            Text(data.date)
+                            
+                            Text("\(entry.date, formatter: dateFormatter)")
                                 .foregroundColor(.white)
+                                .font(.subheadline)
                         }
+                        .padding(.horizontal, 10)
+                        .padding(.bottom, 10)
                     }
                     .padding()
-                    .frame(width: 300, height: 400)
-                    .background(data.color)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue) // Example color, replace with dynamic color based on entry
                     .cornerRadius(15)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 15)
+                            .stroke(Color.black, lineWidth: 3) // Black border
+                    )
                     .shadow(radius: 5)
                 }
             }
             .padding(.horizontal)
         }
+        .padding(.vertical, 10)
     }
+    
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter
+    }()
 }
 
 struct PracticeView_Previews: PreviewProvider {
     static var previews: some View {
-        PracticeView()
+        let entryManager = EntryManager()
+        entryManager.entries = [
+            PracticeEntry(date: Date(), duration: 60, songTitle: "Coding Practice", feedback: "Good session", notes: "Focused on algorithms"),
+            PracticeEntry(date: Date(), duration: 45, songTitle: "Piano Practice", feedback: "Improving technique", notes: "Played scales and arpeggios")
+        ]
+        return PracticeView(entryManager: entryManager)
     }
 }
-*/
