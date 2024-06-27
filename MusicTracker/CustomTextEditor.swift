@@ -1,11 +1,9 @@
-
 import SwiftUI
 
 struct CustomTextEditor: View {
     @Binding var text: String
     @State private var isSheetPresented = false
     var placeholder: String
-    
     
     var body: some View {
         VStack {
@@ -17,7 +15,7 @@ struct CustomTextEditor: View {
                 }
         }
         .sheet(isPresented: $isSheetPresented) {
-            EditSheet(text: $text, isSheetPresented: $isSheetPresented)
+            EditSheet(text: $text, isSheetPresented: $isSheetPresented, placeholder: placeholder)
         }
     }
 }
@@ -25,12 +23,24 @@ struct CustomTextEditor: View {
 struct EditSheet: View {
     @Binding var text: String
     @Binding var isSheetPresented: Bool
+    var placeholder: String
     
     var body: some View {
         VStack {
-            TextEditor(text: $text)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+            ZStack(alignment: .topLeading) {
+                if text.isEmpty {
+                    Text(placeholder)
+                        .foregroundColor(.gray)
+                    
+                        
+                }
+                
+                TextEditor(text: $text)
+                    .padding(25)
+            }
+            .background(Color(UIColor.systemBackground))
+            .cornerRadius(8)
+            .padding()
             
             Button("Done") {
                 isSheetPresented = false
@@ -40,8 +50,6 @@ struct EditSheet: View {
         .padding()
     }
 }
-
-
 
 
 
