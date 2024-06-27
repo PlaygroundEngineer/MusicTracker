@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct MusicTrackerApp: App {
+    let entryManager = EntryManager()
     var body: some Scene {
         WindowGroup {
-            TabContentView()
+            TabContentView(entryManager: entryManager)
         }
     }
 }

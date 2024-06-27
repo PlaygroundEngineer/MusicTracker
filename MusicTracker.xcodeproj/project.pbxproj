@@ -12,6 +12,7 @@
 		5F1299092BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */; };
 		5F12990C2BB0ACF9002B0EFB /* WriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12990A2BB0ACF9002B0EFB /* WriteView.swift */; };
 		5F12990D2BB0ACF9002B0EFB /* TabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12990B2BB0ACF9002B0EFB /* TabContentView.swift */; };
+		5F622E232C2CF473005AD953 /* MilestonesHorizontalScrollView.swift in Resources */ = {isa = PBXBuildFile; fileRef = 5F622E222C2CF473005AD953 /* MilestonesHorizontalScrollView.swift */; };
 		5FACCCE22BF21D74001B4823 /* MusicTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */; };
 		5FD682BF2B4B3B990044D5F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FD682BE2B4B3B990044D5F2 /* Assets.xcassets */; };
 		5FD682C22B4B3B990044D5F2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FD682C12B4B3B990044D5F2 /* Preview Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		5F1299042BB0ACEC002B0EFB /* ContentViewWithoutTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewWithoutTimer.swift; sourceTree = "<group>"; };
 		5F12990A2BB0ACF9002B0EFB /* WriteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteView.swift; sourceTree = "<group>"; };
 		5F12990B2BB0ACF9002B0EFB /* TabContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabContentView.swift; sourceTree = "<group>"; };
+		5F622E222C2CF473005AD953 /* MilestonesHorizontalScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestonesHorizontalScrollView.swift; sourceTree = "<group>"; };
 		5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicTrackerApp.swift; sourceTree = "<group>"; };
 		5FD682B72B4B3B970044D5F2 /* MusicTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD682BE2B4B3B990044D5F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		5FD682B92B4B3B970044D5F2 /* MusicTracker */ = {
 			isa = PBXGroup;
 			children = (
+				5F622E222C2CF473005AD953 /* MilestonesHorizontalScrollView.swift */,
 				5FACCCE12BF21D74001B4823 /* MusicTrackerApp.swift */,
 				5FD7C3762BDED9E20024A593 /* CustomTextEditor.swift */,
 				5FD7C3742BDED9E10024A593 /* PracticeView.swift */,
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FD682C22B4B3B990044D5F2 /* Preview Assets.xcassets in Resources */,
+				5F622E232C2CF473005AD953 /* MilestonesHorizontalScrollView.swift in Resources */,
 				5FD682BF2B4B3B990044D5F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

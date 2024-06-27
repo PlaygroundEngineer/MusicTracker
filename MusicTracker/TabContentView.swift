@@ -1,5 +1,4 @@
 import SwiftUI
-let entryManager = EntryManager()
 
 struct TabContentView: View {
     @ObservedObject var entryManager: EntryManager
@@ -16,7 +15,6 @@ struct TabContentView: View {
                 .tag(0)
 
             PracticeView(entryManager: entryManager)
-            PracticeView()
                 .environmentObject(entryManager)
                 .tabItem {
                     Image(systemName: "lanyardcard")
