@@ -58,7 +58,7 @@ struct WriteView: View {
                         // Notes Text Editor
                         TextEditorWithPlaceholder(text: $newEntry.notes, placeholder: "Type your feedback...")
                             .frame(width: UIScreen.width * 0.84)
-                        TaskView(newEntry: $newEntry)
+                        TaskView(newEntry: $newEntry, entryManager: entryManager)
                     }
                     .padding(8)
                 }

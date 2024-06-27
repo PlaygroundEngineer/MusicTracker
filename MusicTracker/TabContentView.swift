@@ -1,58 +1,8 @@
-/*
-import SwiftUI
-let entryManager = EntryManager()
-
-
-struct TabContentView: View {
-    @State private var selectedTab = 0
-    
-    var body: some View {
-        TabView(selection: $selectedTab) {
-            WriteView()
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Write")
-                }
-                .tag(0)
-            
-            Text("Practice")
-                .tabItem {
-                    Image(systemName: "lanyardcard")
-                    Text("Practice")
-                }
-                .tag(1)
-            
-            Text("Statistics")
-                .tabItem {
-                    Image(systemName: "arrow.clockwise")
-                    Text("Stats")
-                }
-                .tag(2)
-            //CustomTabBar(selectedTab: $selectedTab)
-        }
-    }
-}
-
-struct CustomTabBar: View {
-    @Binding var selectedTab: Int
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(0..<3) { index in
-                Rectangle()
-                    .frame(width: UIScreen.width / 3, height: 4)
-                    .foregroundColor(index == selectedTab ? Color(hex: CustomColors.black, opacity: 1) : Color(hex: CustomColors.black, opacity: 0.25))
-            }
-        }
-    }
-}
- */
-
-
 import SwiftUI
 let entryManager = EntryManager()
 
 struct TabContentView: View {
+    @ObservedObject var entryManager: EntryManager
     @State private var selectedTab = 0
     
     var body: some View {
@@ -64,7 +14,8 @@ struct TabContentView: View {
                     Text("Write")
                 }
                 .tag(0)
-            
+
+            PracticeView(entryManager: entryManager)
             PracticeView()
                 .environmentObject(entryManager)
                 .tabItem {
