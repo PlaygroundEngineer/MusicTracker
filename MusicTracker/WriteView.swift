@@ -28,7 +28,7 @@ struct WriteView: View {
     
     var body: some View {
         /*Color(hex: CustomColors.cream, opacity: 1)
-            .edgesIgnoringSafeArea(.all)*/
+         .edgesIgnoringSafeArea(.all)*/
         GeometryReader { geometry in
             // Brown background rectangle
             VStack(spacing: 1) {
@@ -76,20 +76,20 @@ struct TextEditorWithPlaceholder: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            if text.isEmpty {
+            /*if text.isEmpty {
                 Text(placeholder)
                     .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
                     .padding(8)
-            }
+            }*/
             
-            CustomTextEditor(text: $text)
+            CustomTextEditor(text: $text, placeholder: placeholder)
                 .background(
                     Rectangle()
                         .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
-                )
+                ) 
                 .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
             //.padding(8)
-            
+             
             Rectangle()
                 .frame(width: UIScreen.width * 0.84, height: 5)
                 .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
@@ -97,5 +97,8 @@ struct TextEditorWithPlaceholder: View {
         .padding(8)
     }
 }
+
+
+
 
 
