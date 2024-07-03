@@ -71,6 +71,19 @@ struct PracticeCardView: View {
             }
             
             VStack(spacing: 8) {
+                if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .frame(width: 100, height: 125)
+                        .scaledToFill()
+                        .cornerRadius(5.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .stroke(Color.black, lineWidth: 1.5)
+                                .frame(width: 100, height: 125)
+                            )
+                }
+                
                 Text(entry.songTitle)
                     .font(.system(size: 24)) // Set font size to 24
                     .fontWeight(.medium)
@@ -154,16 +167,22 @@ struct PracticeDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(systemName: "keyboard")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 200)
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black, lineWidth: 1)
-                )
-            
+            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .frame(height: 500)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .scaledToFill()
+                    .cornerRadius(5.0)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5.0)
+                            .stroke(Color.black, lineWidth: 1.5)
+                            .frame(height: 500)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    )
+            } 
             
             Text(entry.songTitle)
                 .font(.title)
