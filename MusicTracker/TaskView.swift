@@ -78,6 +78,7 @@ struct TaskView: View {
                         .append(newEntry)
                     entryManager.saveEntriesToUserDefaults()
                     selectedImage = nil
+                    elapsedTime = 0
                     newEntry = PracticeEntry(imageData: nil, duration: 0, songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
                 } label: {
                     ZStack {
