@@ -95,7 +95,7 @@ struct PracticeCardView: View {
                         .foregroundColor(.black)
                         .font(.system(size: 10))
                     
-                    Text("\(entry.duration) minutes")
+                    Text("\(entry.duration) seconds")
                         .foregroundColor(.black)
                         .font(.system(size: 10))
                     
@@ -172,9 +172,9 @@ struct PracticeDetailView: View {
                     .resizable()
                     .frame(height: 500)
                     .frame(maxWidth: .infinity)
+                    .cornerRadius(5.0)
                     .padding()
                     .scaledToFill()
-                    .cornerRadius(5.0)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5.0)
                             .stroke(Color.black, lineWidth: 1.5)
@@ -190,7 +190,7 @@ struct PracticeDetailView: View {
             
             HStack {
                 Image(systemName: "clock")
-                Text("\(entry.duration) minutes")
+                Text("\(entry.duration) seconds")
                 Spacer()
                 Text(entry.date, style: .date)
             }
