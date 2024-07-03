@@ -48,13 +48,14 @@ struct TaskView: View {
             
             ZStack {
                 Button {
-                    print(newEntry)
-                    //let imageData = selectedImage?.jpegData(compressionQuality: 1.0)
+                    newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
+                    newEntry.colorHex = entryManager.getSequentialColor()
                     entryManager.entries
                         .append(newEntry)
                     entryManager.saveEntriesToUserDefaults()
-                    newEntry = PracticeEntry(duration: 0, songTitle: "", feedback: "", notes: "")
-                }label: {
+                    selectedImage = nil
+                    newEntry = PracticeEntry(imageData: nil, duration: 0, songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                } label: {
                     ZStack {
                         Rectangle()
                             .frame(width: 60, height: 25)
@@ -72,9 +73,6 @@ struct TaskView: View {
         
         
     }
-       // .padding()
-        //.frame(maxWidth: .infinity, alignment: .center)
-      //  .offset(y: -UIScreen.height * 0.17)
     
     func loadImage() {
         guard let selectedImage = selectedImage else {
@@ -83,4 +81,3 @@ struct TaskView: View {
         self.selectedImage = selectedImage
     }
 }
-
