@@ -27,7 +27,7 @@ class EntryManager: ObservableObject {
             CustomColors.slate,
             CustomColors.tan
         ]
-        let color = colors[entryManager.colorIndex % colors.count]
+        let color = colors[self.colorIndex % colors.count]
         self.colorIndex += 1
         return color
     }
