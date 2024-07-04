@@ -19,7 +19,7 @@ struct TaskView: View {
                 Button(action: {
                     isImagePickerPresented.toggle()
                 }) {
-                    Image(systemName: "camera")
+                    Image(systemName: selectedImage == nil ? "camera" : "checkmark")
                         .font(.system(size: 10))
                         .foregroundColor(Color.white)
                 }
