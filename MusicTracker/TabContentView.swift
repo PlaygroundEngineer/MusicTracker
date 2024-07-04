@@ -13,37 +13,21 @@ struct TabContentView: View {
                     Text("Write")
                 }
                 .tag(0)
-
+            
             PracticeView(entryManager: entryManager)
                 .environmentObject(entryManager)
                 .tabItem {
-                    Image(systemName: "lanyardcard")
+                    Image(systemName: "music.note.list")
                     Text("Practice")
                 }
                 .tag(1)
             
-            Text("Statistics")
+            //MilestonesHorizontalScrollView()
                 .tabItem {
-                    Image(systemName: "arrow.clockwise")
+                    Image(systemName: "chart.xyaxis.line")
                     Text("Stats")
                 }
                 .tag(2)
-            //CustomTabBar(selectedTab: $selectedTab)
         }
     }
 }
-
-struct CustomTabBar: View {
-    @Binding var selectedTab: Int
-    
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(0..<3) { index in
-                Rectangle()
-                    .frame(width: UIScreen.width / 3, height: 4)
-                    .foregroundColor(index == selectedTab ? Color(hex: CustomColors.black, opacity: 1) : Color(hex: CustomColors.black, opacity: 0.25))
-            }
-        }
-    }
-}
-

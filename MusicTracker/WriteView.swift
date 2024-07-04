@@ -127,8 +127,6 @@ struct TextEditorWithPlaceholder: View {
         }
         .padding(8)
     }
+
 } 
-
-
-
 
