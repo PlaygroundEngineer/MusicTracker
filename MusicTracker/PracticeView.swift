@@ -74,13 +74,15 @@ struct PracticeCardView: View {
                 if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
                     Image(uiImage: uiImage)
                         .resizable()
-                        .frame(width: 100, height: 125)
-                        .scaledToFill()
+                        .aspectRatio(contentMode: .fill) 
+                        .frame(width: 100, height: UIScreen.height * 0.1)
+                        .clipped()
                         .cornerRadius(5.0)
+                        //.padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 5.0)
                                 .stroke(Color.black, lineWidth: 1.5)
-                                .frame(width: 100, height: 125)
+                                .frame(width: 100, height: UIScreen.height * 0.1)
                             )
                 }
                 
@@ -170,15 +172,16 @@ struct PracticeDetailView: View {
             if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .frame(height: 500)
+                    .aspectRatio(contentMode: .fill) 
+                    .frame(height: UIScreen.height * 0.5)
                     .frame(maxWidth: .infinity)
+                    .clipped()
                     .cornerRadius(5.0)
                     .padding()
-                    .scaledToFill()
                     .overlay(
                         RoundedRectangle(cornerRadius: 5.0)
                             .stroke(Color.black, lineWidth: 1.5)
-                            .frame(height: 500)
+                            .frame(height: UIScreen.height * 0.5)
                             .frame(maxWidth: .infinity)
                             .padding()
                     )
