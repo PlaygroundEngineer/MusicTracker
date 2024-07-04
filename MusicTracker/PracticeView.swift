@@ -2,12 +2,15 @@ import SwiftUI
 
 struct PracticeView: View {
     @ObservedObject var entryManager: EntryManager
+    @State private var isShowingWriteView = false
     
     var body: some View {
         NavigationView {
             ScrollView {
                 HStack(alignment: .top, spacing: 20) {
                     VStack {
+                        AddNewCardView(isShowingWriteView: $isShowingWriteView)
+       
                         ForEach(Array(leftEntries.enumerated()), id: \.element.id) { index, entry in
                             NavigationLink(destination: PracticeDetailView(entry: entry, entryManager: entryManager)) {
                                 PracticeCardView(entry: entry, entryManager: entryManager, index: index)
@@ -25,12 +28,181 @@ struct PracticeView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
-                
             }
+            .background(
+                NavigationLink(destination: WriteView().environmentObject(entryManager), isActive: $isShowingWriteView) {
+                    EmptyView()
+                }
+            )
         }
-        .ignoresSafeArea()
-        //.background(Color(hex: CustomColors.cream, opacity: 1))
-        .padding(.vertical, 10)
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    var leftEntries: [PracticeEntry] {
+        Array(entryManager.entries.enumerated().filter { $0.offset % 2 == 0 }.map { $0.element })
+    }
+    
+    var rightEntries: [PracticeEntry] {
+        Array(entryManager.entries.enumerated().filter { $0.offset % 2 != 0 }.map { $0.element })
+    }
+}
+
+struct AddNewCardView: View {
+    @Binding var isShowingWriteView: Bool
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "plus")
+                .resizable()
+                .frame(width: 60, height: 80)
+                .foregroundColor(.black)
+                .background(Color(hex: CustomColors.green))
+                .cornerRadius(5.0)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(Color(hex: CustomColors.green), lineWidth: 1.5)
+                        .frame(width: 60, height: 80)
+                )
+                .onTapGesture {
+                    isShowingWriteView = true
+                }
+            
+            /*Text("Add New")
+                .font(.system(size: 24))
+                .fontWeight(.medium)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)*/
+            
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color(hex: CustomColors.green))
+        .cornerRadius(0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 0)
+                .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
+                .overlay(
+                    VStack {
+                        Spacer()
+                        Rectangle()
+                            .fill(Color(hex: CustomColors.black))
+                            .frame(height: 4)
+                    }
+                        .clipShape(RoundedRectangle(cornerRadius: 0))
+                )
+        )
+        .padding(.bottom, 10)
+    }
+}
+
+// Continue with PracticeCardView, PracticeDetailView, etc.
+struct PracticeCardView: View {
+    let entry: PracticeEntry
+    @ObservedObject var entryManager: EntryManager
+    let index: Int
+    
+    @State private var offset = CGSize.zero
+    @State private var isSwiped = false
+    
+    var body: some View {
+        ZStack {
+            HStack {
+                Spacer()
+                Button(action: {
+                    withAnimation {
+                        if let index = self.entryManager.entries.firstIndex(where: { $0.id == self.entry.id }) {
+                            self.entryManager.entries.remove(at: index)
+                        }
+                    }
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(10)
+                }
+                .padding(.trailing, 20)
+            }
+            
+            VStack(spacing: 8) {
+                if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .frame(width: 100, height: 125)
+                        .scaledToFill()
+                        .cornerRadius(5.0)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5.0)
+                                .stroke(Color.black, lineWidth: 1.5)
+                                .frame(width: 100, height: 125)
+                        )
+                }
+                
+                Text(entry.songTitle)
+                    .font(.system(size: 24)) // Set font size to 24
+                    .fontWeight(.medium)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                
+                HStack {
+                    Image(systemName: "timer")
+                        .foregroundColor(.black)
+                        .font(.system(size: 10))
+                    
+                    Text("\(entry.duration) seconds")
+                        .foregroundColor(.black)
+                        .font(.system(size: 10))
+                    
+                    Spacer()
+                    
+                    Text("\(entry.date, formatter: dateFormatter)")
+                        .foregroundColor(.black)
+                        .font(.system(size: 10))
+                }
+                .padding(.horizontal, 0)
+                .padding(.bottom, 10)
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color(hex: entry.colorHex))
+            .cornerRadius(0)
+            .overlay(
+                RoundedRectangle(cornerRadius: 0)
+                    .stroke(Color.black, lineWidth: 1.5)
+                    .overlay(
+                        VStack {
+                            Spacer()
+                            Rectangle()
+                                .fill(Color.black)
+                                .frame(height: 4)
+                        }
+                            .clipShape(RoundedRectangle(cornerRadius: 0))
+                    )
+            )
+            //.shadow(radius: 5)
+            .offset(x: offset.width)
+            .gesture(
+                DragGesture()
+                    .onChanged { gesture in
+                        if gesture.translation.width < 0 {
+                            self.offset = gesture.translation
+                        }
+                    }
+                    .onEnded { _ in
+                        if self.offset.width < -100 {
+                            withAnimation {
+                                self.isSwiped = true
+                                self.offset.width = -100 // lock the card in place
+                            }
+                        } else {
+                            withAnimation {
+                                self.offset = .zero
+                            }
+                        }
+                    }
+            )
+        }
     }
     
     var leftEntries: [PracticeEntry] {
