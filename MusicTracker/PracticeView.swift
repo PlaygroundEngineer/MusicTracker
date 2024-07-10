@@ -9,7 +9,7 @@ struct PracticeView: View {
             ScrollView {
                 HStack(alignment: .top, spacing: 20) {
                     VStack {
-                        AddNewCardView(isShowingWriteView: $isShowingWriteView)
+                        NewCardView(isShowingWriteView: $isShowingWriteView)
                         
                         ForEach(Array(leftEntries.enumerated()), id: \.element.id) { index, entry in
                             NavigationLink(destination: PracticeDetailView(entry: entry, entryManager: entryManager)) {
