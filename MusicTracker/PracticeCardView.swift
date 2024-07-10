@@ -19,9 +19,9 @@ struct PracticeCardView: View {
                     }
                 }) {
                     Image(systemName: "trash")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(hex: CustomColors.cream))
                         .padding()
-                        .background(Color.red)
+                        .background(Color(hex: CustomColors.gray))
                         .cornerRadius(10)
                 }
                 .padding(.trailing, 20)
@@ -32,36 +32,36 @@ struct PracticeCardView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill) 
-                        .frame(width: 100, height: UIScreen.height * 0.1)
+                        .frame(height: UIScreen.height * 0.1)
                         .clipped()
                         .cornerRadius(5.0)
                     //.padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 5.0)
                                 .stroke(Color.black, lineWidth: 1.5)
-                                .frame(width: 100, height: UIScreen.height * 0.1)
+                                .frame(height: UIScreen.height * 0.1)
                         )
                 }
                 
                 Text(entry.songTitle)
                     .font(.system(size: 24)) // Set font size to 24
                     .fontWeight(.medium)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(hex: CustomColors.black))
                     .multilineTextAlignment(.center)
                 
                 HStack {
                     Image(systemName: "timer")
-                        .foregroundColor(.black)
+                        ..foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                     
                     Text("\(entry.duration) seconds")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                     
                     Spacer()
                     
                     Text("\(entry.date, formatter: dateFormatter)")
-                        .foregroundColor(.black)
+                        .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                 }
                 .padding(.horizontal, 0)
@@ -73,12 +73,12 @@ struct PracticeCardView: View {
             .cornerRadius(0)
             .overlay(
                 RoundedRectangle(cornerRadius: 0)
-                    .stroke(Color.black, lineWidth: 1.5)
+                    .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
                     .overlay(
                         VStack {
                             Spacer()
                             Rectangle()
-                                .fill(Color.black)
+                                .fill(Color(hex: CustomColors.black))
                                 .frame(height: 4)
                         }
                             .clipShape(RoundedRectangle(cornerRadius: 0))

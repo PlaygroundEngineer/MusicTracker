@@ -124,4 +124,3 @@ struct PracticeDetailView: View {
         isEditingNotes = false
     }
 }
-
