@@ -51,7 +51,7 @@ struct PracticeCardView: View {
                 
                 HStack {
                     Image(systemName: "timer")
-                        ..foregroundColor(Color(hex: CustomColors.black))
+                        .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                     
                     Text("\(entry.duration) seconds")
