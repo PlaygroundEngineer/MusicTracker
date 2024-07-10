@@ -2,12 +2,15 @@ import SwiftUI
 
 struct PracticeView: View {
     @ObservedObject var entryManager: EntryManager
+    @State private var isShowingWriteView = false
     
     var body: some View {
         NavigationView {
             ScrollView {
                 HStack(alignment: .top, spacing: 20) {
                     VStack {
+                        AddNewCardView(isShowingWriteView: $isShowingWriteView)
+                        
                         ForEach(Array(leftEntries.enumerated()), id: \.element.id) { index, entry in
                             NavigationLink(destination: PracticeDetailView(entry: entry, entryManager: entryManager)) {
                                 PracticeCardView(entry: entry, entryManager: entryManager, index: index)
@@ -25,12 +28,14 @@ struct PracticeView: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
-                
             }
+            .background(
+                NavigationLink(destination: WriteView().environmentObject(entryManager), isActive: $isShowingWriteView) {
+                    EmptyView()
+                }
+            )
         }
-        .ignoresSafeArea()
-        //.background(Color(hex: CustomColors.cream, opacity: 1))
-        .padding(.vertical, 10)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     var leftEntries: [PracticeEntry] {
@@ -41,6 +46,58 @@ struct PracticeView: View {
         Array(entryManager.entries.enumerated().filter { $0.offset % 2 != 0 }.map { $0.element })
     }
 }
+
+struct AddNewCardView: View {
+    @Binding var isShowingWriteView: Bool
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "plus")
+                .resizable()
+                .frame(width: 60, height: 60)
+                .foregroundColor(.black)
+                .background(Color(hex: CustomColors.tan))
+                .cornerRadius(5.0)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5.0)
+                        .stroke(Color(hex: CustomColors.tan), lineWidth: 1.5)
+                        .frame(width: 100, height: UIScreen.height * 0.1)
+                )
+                .onTapGesture {
+                    isShowingWriteView = true
+                }
+            
+            /*Text("Add New")
+             .font(.system(size: 24))
+             .fontWeight(.medium)
+             .foregroundColor(.black)
+             .multilineTextAlignment(.center)*/
+            
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color(hex: CustomColors.tan))
+        .cornerRadius(0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 0)
+                .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
+                .overlay(
+                    VStack {
+                        Spacer()
+                        Rectangle()
+                            .fill(Color(hex: CustomColors.black))
+                            .frame(height: 4)
+                    }
+                        .clipShape(RoundedRectangle(cornerRadius: 0))
+                )
+        )
+        .padding(.bottom, 10)
+    }
+}
+
+// Continue with PracticeCardView, PracticeDetailView, etc.
+
 
 struct PracticeCardView: View {
     let entry: PracticeEntry
@@ -62,9 +119,9 @@ struct PracticeCardView: View {
                     }
                 }) {
                     Image(systemName: "trash")
-                        .foregroundColor(Color(hex: CustomColors.cream))
+                        .foregroundColor(.white)
                         .padding()
-                        .background(Color(hex: CustomColors.magenta))
+                        .background(Color.red)
                         .cornerRadius(10)
                 }
                 .padding(.trailing, 20)
@@ -75,47 +132,48 @@ struct PracticeCardView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill) 
-                        .frame(height: UIScreen.height * 0.1)
+                        .frame(width: 100, height: UIScreen.height * 0.1)
                         .clipped()
                         .cornerRadius(5.0)
-                        //.padding()
+                    //.padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 5.0)
                                 .stroke(Color.black, lineWidth: 1.5)
-                                .frame(height: UIScreen.height * 0.1)
-                            )
+                                .frame(width: 100, height: UIScreen.height * 0.1)
+                        )
                 }
                 
                 Text(entry.songTitle)
                     .font(.system(size: 24)) // Set font size to 24
                     .fontWeight(.medium)
-                    .foregroundColor(Color(hex: CustomColors.black))
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                 
                 HStack {
                     Image(systemName: "timer")
-                        .foregroundColor(Color(hex: CustomColors.black))
+                        .foregroundColor(.black)
                         .font(.system(size: 10))
                     
                     Text("\(entry.duration) seconds")
-                        .foregroundColor(Color(hex: CustomColors.black))
+                        .foregroundColor(.black)
                         .font(.system(size: 10))
                     
                     Spacer()
                     
                     Text("\(entry.date, formatter: dateFormatter)")
-                        .foregroundColor(Color(hex: CustomColors.black))
+                        .foregroundColor(.black)
                         .font(.system(size: 10))
                 }
                 .padding(.horizontal, 0)
                 .padding(.bottom, 10)
             }
             .padding()
+            .frame(maxWidth: .infinity)
             .background(Color(hex: entry.colorHex))
             .cornerRadius(0)
             .overlay(
                 RoundedRectangle(cornerRadius: 0)
-                    .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
+                    .stroke(Color.black, lineWidth: 1.5)
                     .overlay(
                         VStack {
                             Spacer()
@@ -173,22 +231,21 @@ struct PracticeDetailView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill) 
                     .frame(height: UIScreen.height * 0.5)
-                    .frame(width: UIScreen.width * 0.9)
+                    .frame(maxWidth: .infinity)
                     .clipped()
                     .cornerRadius(5.0)
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 5.0)
-                            .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
+                            .stroke(Color.black, lineWidth: 1.5)
                             .frame(height: UIScreen.height * 0.5)
-                            .frame(width: UIScreen.width * 0.9)
+                            .frame(maxWidth: .infinity)
                             .padding()
                     )
             } 
             
             Text(entry.songTitle)
                 .font(.title)
-                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             HStack {
@@ -203,20 +260,17 @@ struct PracticeDetailView: View {
             
             Text("What did I practice?")
                 .font(.headline)
-                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             if isEditingNotes {
                 TextEditor(text: $editableNotes) 
                     .frame(height: 150)
-                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing])
                     .gesture(DragGesture().onEnded { _ in
                         endEditingNotes()
                     })
             } else {
                 Text(entry.notes)
-                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
                         editableNotes = entry.notes
@@ -228,20 +282,17 @@ struct PracticeDetailView: View {
             
             Text("What feedback do I have?")
                 .font(.headline)
-                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             if isEditingFeedback {
                 TextEditor(text: $editableFeedback)
                     .frame(height: 150)
-                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing])
                     .gesture(DragGesture().onEnded { _ in
                         endEditingFeedback()
                     })
             } else {
                 Text(entry.feedback)
-                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
                         editableFeedback = entry.feedback
