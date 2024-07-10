@@ -14,21 +14,22 @@ struct PracticeDetailView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill) 
                     .frame(height: UIScreen.height * 0.5)
-                    .frame(maxWidth: .infinity)
+                    .frame(width: UIScreen.width * 0.9)
                     .clipped()
                     .cornerRadius(5.0)
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 5.0)
-                            .stroke(Color.black, lineWidth: 1.5)
+                            .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
                             .frame(height: UIScreen.height * 0.5)
-                            .frame(maxWidth: .infinity)
+                            .frame(width: UIScreen.width * 0.9)
                             .padding()
                     )
             } 
             
             Text(entry.songTitle)
                 .font(.title)
+                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             HStack {
@@ -43,17 +44,20 @@ struct PracticeDetailView: View {
             
             Text("What did I practice?")
                 .font(.headline)
+                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             if isEditingNotes {
                 TextEditor(text: $editableNotes) 
                     .frame(height: 150)
+                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing])
                     .gesture(DragGesture().onEnded { _ in
                         endEditingNotes()
                     })
             } else {
                 Text(entry.notes)
+                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
                         editableNotes = entry.notes
@@ -65,17 +69,20 @@ struct PracticeDetailView: View {
             
             Text("What feedback do I have?")
                 .font(.headline)
+                .foregroundColor(Color(hex: CustomColors.black))
                 .padding([.leading, .trailing, .top])
             
             if isEditingFeedback {
                 TextEditor(text: $editableFeedback)
                     .frame(height: 150)
+                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing])
                     .gesture(DragGesture().onEnded { _ in
                         endEditingFeedback()
                     })
             } else {
                 Text(entry.feedback)
+                    .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
                         editableFeedback = entry.feedback
