@@ -5,7 +5,7 @@ public struct PracticeEntry: Identifiable, Codable {
     public var id = UUID()
     var imageData: Data?
     var date = Date()
-    var duration: Int
+    var duration: String
     var songTitle: String
     var feedback: String
     var notes: String
@@ -56,7 +56,7 @@ class EntryManager: ObservableObject {
 
 struct WriteView: View {
     @EnvironmentObject var entryManager: EntryManager
-    @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
+    @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: "", songTitle: "", feedback: "", notes: "", colorHex: "")
     
     var body: some View {
         Color(hex: CustomColors.cream, opacity: 1)
