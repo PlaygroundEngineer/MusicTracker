@@ -1,5 +1,5 @@
  import SwiftUI
-struct AddNewCardView: View {
+struct NewCardView: View {
     @Binding var isShowingWriteView: Bool
     
     var body: some View {
