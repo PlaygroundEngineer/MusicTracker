@@ -15,13 +15,13 @@ struct TaskView: View {
             ZStack {
                 Circle()
                     .frame(width: 25)
-                    .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+                    .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.black) : Color(hex: CustomColors.cream))
                 Button(action: {
                     isImagePickerPresented.toggle()
                 }) {
                     Image(systemName: selectedImage == nil ? "camera" : "checkmark")
                         .font(.system(size: 10))
-                        .foregroundColor(Color.white)
+                        .foregroundColor( selectedImage == nil ? Color(hex: CustomColors.cream) : Color(hex: CustomColors.black))
                 }
                 .padding(4)
                 .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
@@ -36,13 +36,13 @@ struct TaskView: View {
                         .foregroundColor(Color.white)
                     if isPlaying {
                         Text("\(Int(elapsedTime)) seconds")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(hex: CustomColors.black))
                             .padding(.horizontal) // Add horizontal padding
                             .frame(width: 85, height: 40) // Fixed width
                             .font(.system(size: 10))
                     } else {
                         TextField("Type here", text: $customText)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(hex: CustomColors.black))
                             .padding(.horizontal) // Add horizontal padding
                             .frame(width: 85, height: 40) // Fixed width
                             .font(.system(size: 10))
@@ -64,7 +64,7 @@ struct TaskView: View {
                     }) {
                         Image(systemName: isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 10))
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color(hex: CustomColors.cream))
                     }
                 }
             }
@@ -89,7 +89,7 @@ struct TaskView: View {
                         
                         Text("Add ->")
                             .font(.system(size: 10))
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color(hex: CustomColors.cream))
                     }
                 }
             }
