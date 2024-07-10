@@ -9,19 +9,19 @@ struct TaskView: View {
     @State private var isPlaying: Bool = false
     @State private var elapsedTime: TimeInterval = 0
     @State private var customText: String = ""
-    
+
     var body: some View {
         HStack {
             ZStack {
                 Circle()
                     .frame(width: 25)
-                    .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.black) : Color(hex: CustomColors.cream))
+                    .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
                 Button(action: {
                     isImagePickerPresented.toggle()
                 }) {
-                    Image(systemName: selectedImage == nil ? "camera" : "checkmark")
+                    Image(systemName: "camera")
                         .font(.system(size: 10))
-                        .foregroundColor( selectedImage == nil ? Color(hex: CustomColors.cream) : Color(hex: CustomColors.black))
+                        .foregroundColor(Color.white)
                 }
                 .padding(4)
                 .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
@@ -35,18 +35,24 @@ struct TaskView: View {
                         .frame(width: 110, height: 25)
                         .foregroundColor(Color.white)
                     if isPlaying {
-                        Text("\(Int(elapsedTime)) seconds")
-                            .foregroundColor(Color(hex: CustomColors.black))
-                            .padding(.horizontal) // Add horizontal padding
-                            .frame(width: 85, height: 40) // Fixed width
+                        Text(formatElapsedTime(elapsedTime))
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                            .frame(width: 85, height: 40)
                             .font(.system(size: 10))
                     } else {
-                        TextField("Type here", text: $customText)
-                            .foregroundColor(Color(hex: CustomColors.black))
-                            .padding(.horizontal) // Add horizontal padding
-                            .frame(width: 85, height: 40) // Fixed width
+                        Text(formatElapsedTime(elapsedTime))
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                            .frame(width: 85, height: 40)
                             .font(.system(size: 10))
                         
+                        /* TextField("Type here", text: $customText)
+                            .foregroundColor(.black)
+                            .padding(.horizontal)
+                            .frame(width: 85, height: 40)
+                            .font(.system(size: 10))
+                        */
                     }
                 }
                 ZStack {
@@ -64,22 +70,23 @@ struct TaskView: View {
                     }) {
                         Image(systemName: isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 10))
-                            .foregroundColor(Color(hex: CustomColors.cream))
+                            .foregroundColor(Color.white)
                     }
                 }
             }
             
             ZStack {
                 Button {
-                    newEntry.duration = Int(elapsedTime)
+                    newEntry.duration = formatElapsedTime(elapsedTime)
                     newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
                     newEntry.colorHex = entryManager.getSequentialColor()
-                    entryManager.entries
-                        .append(newEntry)
+                    entryManager.entries.append(newEntry)
                     entryManager.saveEntriesToUserDefaults()
                     selectedImage = nil
                     elapsedTime = 0
-                    newEntry = PracticeEntry(imageData: nil, duration: 0, songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                    newEntry = PracticeEntry(imageData: nil, duration: "00:00:00", songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                    stopTimer()
+                    isPlaying = false
                 } label: {
                     ZStack {
                         Rectangle()
@@ -89,14 +96,12 @@ struct TaskView: View {
                         
                         Text("Add ->")
                             .font(.system(size: 10))
-                            .foregroundColor(Color(hex: CustomColors.cream))
+                            .foregroundColor(Color.white)
                     }
                 }
             }
         }
         .padding(8)
-        
-        
     }
     
     func loadImage() {
@@ -117,4 +122,21 @@ struct TaskView: View {
         timer?.invalidate()
         timer = nil
     }
+    
+    func formatElapsedTime(_ time: TimeInterval) -> String {
+        let seconds = Int(time) % 60
+        let minutes = (Int(time) / 60) % 60
+        let hours = (Int(time) / 3600) % 24
+        
+        // Format each component to always have two digits
+        let hoursString = String(format: "%02d", hours)
+        let minutesString = String(format: "%02d", minutes)
+        let secondsString = String(format: "%02d", seconds)
+        
+        // Combine them into the final string
+        let timeString = "\(hoursString):\(minutesString):\(secondsString)"
+        
+        return timeString
+    }
 }
+
