@@ -43,7 +43,7 @@ struct PracticeCardView: View {
                         )
                 }
                 
-                Text(entry.songTitle)
+                Text(entry.songTitle.isEmpty ? "..." : entry.songTitle)
                     .font(.system(size: 24)) // Set font size to 24
                     .fontWeight(.medium)
                     .foregroundColor(Color(hex: CustomColors.black))
@@ -115,4 +115,3 @@ struct PracticeCardView: View {
         return formatter
     }()
 }
-
