@@ -3,4 +3,165 @@
    uuid = "90B1200B-704B-4C34-B1CB-3943E082462E"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A20CBEC-6225-48C5-9995-4D136A5CE226"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/PracticeDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "4A20CBEC-6225-48C5-9995-4D136A5CE226 - c48abb64fa9d7d94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in MusicTracker.PracticeDetailView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "2557">
+               </Location>
+               <Location
+                  uuid = "4A20CBEC-6225-48C5-9995-4D136A5CE226 - c48abb64fa9d7d94"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in MusicTracker.PracticeDetailView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "3744">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E303A9C-36AD-482A-94CF-CA29F9EC1844"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/PracticeDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "4E303A9C-36AD-482A-94CF-CA29F9EC1844 - 744e39e652c993f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.DragGesture.Value) -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in MusicTracker.PracticeDetailView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "4E303A9C-36AD-482A-94CF-CA29F9EC1844 - 744e39e652c993f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.DragGesture.Value) -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.overlay&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0&gt;, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.gesture&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.Gesture&gt;(_: &#x3c4;_1_0, including: SwiftUI.GestureMask) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Spacer)&gt; in MusicTracker.PracticeDetailView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F62B0BE-2205-4C7A-99B8-AFD3978C7A16"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/PracticeDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "8F62B0BE-2205-4C7A-99B8-AFD3978C7A16 - 89907655ce83c923"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.PracticeDetailView.endEditingTitle() -&gt; ()"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "8F62B0BE-2205-4C7A-99B8-AFD3978C7A16 - 89907655ce83c923"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.PracticeDetailView.endEditingTitle() -&gt; ()"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "8F62B0BE-2205-4C7A-99B8-AFD3978C7A16 - 89907655ce83c9a7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.PracticeDetailView.endEditingTitle() -&gt; ()"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "288">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
