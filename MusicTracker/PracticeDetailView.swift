@@ -2,8 +2,10 @@ import SwiftUI
 struct PracticeDetailView: View {
     var entry: PracticeEntry
     @ObservedObject var entryManager: EntryManager
+    @State private var isEditingTitle = false
     @State private var isEditingFeedback = false
     @State private var isEditingNotes = false
+    @State private var editableTitle: String = ""
     @State private var editableFeedback: String = ""
     @State private var editableNotes: String = ""
     
@@ -27,10 +29,25 @@ struct PracticeDetailView: View {
                     )
             } 
             
-            Text(entry.songTitle)
-                .font(.title)
-                .foregroundColor(Color(hex: CustomColors.black))
-                .padding([.leading, .trailing, .top])
+            if isEditingTitle {
+                TextEditor(text: $editableTitle)
+                    .font(.title)
+                    .frame(height: 50)
+                    .foregroundColor(Color(hex: CustomColors.black))
+                    .padding([.leading, .trailing])
+                    .gesture(DragGesture().onEnded { _ in
+                        endEditingTitle()
+                    })
+            } else {
+                Text(entry.songTitle.isEmpty ? "..." : entry.songTitle)
+                    .font(.title)
+                    .foregroundColor(Color(hex: CustomColors.black))
+                    .padding([.leading, .trailing, .bottom])
+                    .onTapGesture {
+                        editableTitle = entry.songTitle
+                        isEditingTitle = true
+                    }
+            }
             
             HStack {
                 Image(systemName: "clock")
@@ -48,7 +65,7 @@ struct PracticeDetailView: View {
                 .padding([.leading, .trailing, .top])
             
             if isEditingNotes {
-                TextEditor(text: $editableNotes) 
+                TextEditor(text: $editableNotes)
                     .frame(height: 150)
                     .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing])
@@ -56,7 +73,7 @@ struct PracticeDetailView: View {
                         endEditingNotes()
                     })
             } else {
-                Text(entry.notes)
+                Text(entry.notes.isEmpty ? "..." : entry.notes)
                     .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
@@ -81,7 +98,7 @@ struct PracticeDetailView: View {
                         endEditingFeedback()
                     })
             } else {
-                Text(entry.feedback)
+                Text(entry.feedback.isEmpty ? "..." : entry.feedback)
                     .foregroundColor(Color(hex: CustomColors.gray))
                     .padding([.leading, .trailing, .bottom])
                     .onTapGesture {
@@ -106,6 +123,14 @@ struct PracticeDetailView: View {
                 endEditingNotes()
             }
         }
+    }
+    
+    func endEditingTitle() {
+        // Save edited title back to entry
+        var updatedEntry = entry
+        updatedEntry.songTitle = editableTitle
+        entryManager.updateEntry(updatedEntry)
+        isEditingTitle = false
     }
     
     private func endEditingFeedback() {
