@@ -1,6 +1,8 @@
 import SwiftUI
+
 struct PracticeCardView: View {
     let entry: PracticeEntry
+    
     @ObservedObject var entryManager: EntryManager
     let index: Int
     

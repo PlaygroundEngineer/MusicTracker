@@ -163,5 +163,131 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CCD17F3-B27D-4F3F-87D2-754CC057BDB9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/PracticeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "6CCD17F3-B27D-4F3F-87D2-754CC057BDB9 - e75e068a1c37edb5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in MusicTracker.PracticeView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "6CCD17F3-B27D-4F3F-87D2-754CC057BDB9 - e75e068a1c37e2da"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in MusicTracker.PracticeView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "222">
+               </Location>
+               <Location
+                  uuid = "6CCD17F3-B27D-4F3F-87D2-754CC057BDB9 - 2ac29b02d76553d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, &lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(MusicTracker.NewCardView, SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, &lt;&lt;opaque return type of SwiftUI.View.environmentObject&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Combine.ObservableObject&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;(offset: Swift.Int, element: MusicTracker.PracticeEntry)&gt;, Foundation.UUID, SwiftUI.NavigationLink&lt;MusicTracker.PracticeCardView, MusicTracker.PracticeDetailView&gt;&gt;&gt;)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(_: &#x3c4;_1_0, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in MusicTracker.PracticeView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/PracticeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "222">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A036D0F-1690-4E64-9AFF-58C3038B6BA9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/CustomTextEditorNew.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "makeUIView(context:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0A036D0F-1690-4E64-9AFF-58C3038B6BA9 - 5fdcd47659633bc1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.CustomTextEditor.makeUIView(context: SwiftUI.UIViewRepresentableContext&lt;MusicTracker.CustomTextEditor&gt;) -&gt; __C.UITextView"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditorNew.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "483">
+               </Location>
+               <Location
+                  uuid = "0A036D0F-1690-4E64-9AFF-58C3038B6BA9 - 5fdcd47659633bc1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.CustomTextEditor.makeUIView(context: SwiftUI.UIViewRepresentableContext&lt;MusicTracker.CustomTextEditor&gt;) -&gt; __C.UITextView"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditorNew.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "520">
+               </Location>
+               <Location
+                  uuid = "0A036D0F-1690-4E64-9AFF-58C3038B6BA9 - 5fdcd47659633bc1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicTracker.CustomTextEditor.makeUIView(context: SwiftUI.UIViewRepresentableContext&lt;MusicTracker.CustomTextEditor&gt;) -&gt; __C.UITextView"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditorNew.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "495">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

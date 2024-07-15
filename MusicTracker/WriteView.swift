@@ -1,132 +1,94 @@
 import SwiftUI
 import Combine
 
-public struct PracticeEntry: Identifiable, Codable {
-    public var id = UUID()
-    var imageData: Data?
-    var date = Date()
-    var duration: Int
-    var songTitle: String
-    var feedback: String
-    var notes: String
-    var colorHex: String
-}
-
-class EntryManager: ObservableObject {
-    @Published var entries: [PracticeEntry] = []
-    
-    var colorIndex: Int = 0
-    
-    func getSequentialColor() -> String {
-        let colors: [String] = [
-            CustomColors.green,
-            CustomColors.blue,
-            CustomColors.pink, 
-            CustomColors.yellow,
-            CustomColors.magenta,
-            CustomColors.slate,
-            CustomColors.tan
-        ]
-        let color = colors[self.colorIndex % colors.count]
-        self.colorIndex += 1
-        return color
-    }
-    
-    func saveEntriesToUserDefaults() {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(entries) {
-            UserDefaults.standard.set(encoded, forKey: "practiceEntries")
-        }
-    }
-    
-    func deleteEntry(by id: UUID) {
-        if let index = entries.firstIndex(where: { $0.id == id }) {
-            entries.remove(at: index)
-            saveEntriesToUserDefaults()
-        }
-    }
-    
-    func updateEntry(_ entry: PracticeEntry) {
-        if let index = entries.firstIndex(where: { $0.id == entry.id }) {
-            entries[index] = entry
-            saveEntriesToUserDefaults()
-        }
-    }
-}
-
 struct WriteView: View {
+    @State var entry: PracticeEntry
     @EnvironmentObject var entryManager: EntryManager
-    @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
+   // @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
     
     var body: some View {
         Color(hex: CustomColors.cream, opacity: 1)
-         .edgesIgnoringSafeArea(.all)
-         .overlay(
-            GeometryReader { geometry in
-                ZStack {
-                    VStack (spacing: 1) {
-                        Spacer()
-                        Text("journey")
-                            .font(.system(size: 40))
-                            .fontDesign(.monospaced)
-                            .fontWeight(.light)
-                            .foregroundColor(Color(hex: CustomColors.black))
-                        Text("FURTHER")
-                            .font(.system(size: 50))
-                            .fontDesign(.serif)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color(hex: CustomColors.black))
-                            .zIndex(1)
-                        
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
-                                .frame(width: UIScreen.width * 0.9, alignment: .center)
-                                .offset(y: -25)
-                                .zIndex(0)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                GeometryReader { geometry in
+                    ZStack {
+                        VStack(spacing: 1) {
+                            Spacer()
+                            Text("journey")
+                                .font(.system(size: 40))
+                                .fontDesign(.monospaced)
+                                .fontWeight(.light)
+                                .foregroundColor(Color(hex: CustomColors.black))
+                            Text("FURTHER")
+                                .font(.system(size: 50))
+                                .fontDesign(.serif)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color(hex: CustomColors.black))
+                                .zIndex(1)
+                            TaskView(newEntry: $entry, entryManager: entryManager)
                             
-                            VStack {
-                                // Song Title Text Editor
-                                TextEditorWithPlaceholder(text: $newEntry.songTitle, placeholder: "Type your song...")
-                                    .frame(width: UIScreen.width * 0.84)
-                                
-                                // Feedback Text Editor
-                                TextEditorWithPlaceholder(text: $newEntry.notes, placeholder: "Type your practice...")
-                                    .frame(width: UIScreen.width * 0.84)
-                                
-                                // Notes Text Editor
-                                TextEditorWithPlaceholder(text: $newEntry.feedback, placeholder: "Type your feedback...")
-                                    .frame(width: UIScreen.width * 0.84)
-                                TaskView(newEntry: $newEntry, entryManager: entryManager)
+                            ScrollView {
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
+                                        .frame(width: UIScreen.width * 0.9, alignment: .center)
+                                        .offset(y: -25)
+                                        .zIndex(0)
+                                    
+                                    VStack {
+                                        // Song Title Text Editor
+                                        TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "Type your song...")
+                                            .frame(width: UIScreen.width * 0.84)
+                                        
+                                        // Feedback Text Editor
+                                        TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Type your practice...")
+                                            .frame(width: UIScreen.width * 0.84)
+                                        
+                                        // Notes Text Editor
+                                        TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Type your feedback...")
+                                            .frame(width: UIScreen.width * 0.84)
+                                        
+                                    }
+                                    .padding(8)
+                                }
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .center)
                             }
-                            .padding(8)
                         }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .center)
                     }
                 }
-            }
-         )
+                .onTapGesture {
+                    self.hideKeyboard()
+                }
+            )
     }
 }
 
-struct TextEditorWithPlaceholder: View {
-    @Binding var text: String
-    var placeholder: String
-    
-    var body: some View {
-        ZStack(alignment: .bottom) {
-            CustomTextEditor(text: $text, placeholder: placeholder)
-                .background(
-                    Rectangle()
-                        .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
-                ) 
-                .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
-            
-            Rectangle()
-                .frame(width: UIScreen.width * 0.84, height: 5)
-                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
-        }
-        .padding(8)
+// Extension to hide keyboard
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+
+//struct TextEditorWithPlaceholder: View {
+//    @Binding var text: String
+//    var placeholder: String
+//
+//    var body: some View {
+//        ZStack(alignment: .bottom) {
+//            CustomTextEditor(text: $text, placeholder: placeholder)
+//                .background(
+//                    Rectangle()
+//                        .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
+//                )
+//                .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
+//
+//            Rectangle()
+//                .frame(width: UIScreen.width * 0.84, height: 5)
+//                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+//        }
+//        .padding(8)
+//    }
+//}
