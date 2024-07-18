@@ -66,7 +66,7 @@ struct PracticeCardView: View {
                         .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                 }
-                .padding(.horizontal, 0)
+                .padding(.horizontal, 10)
                 .padding(.bottom, 10)
             }
             .padding()
@@ -86,6 +86,7 @@ struct PracticeCardView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 0))
                     )
             )
+            .padding(.bottom, 10)
             //.shadow(radius: 5)
             .offset(x: offset.width)
             .gesture(
