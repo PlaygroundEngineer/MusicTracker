@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CustomTextEditor: UIViewRepresentable {
     @Binding var text: String
-    var placeholder: String
     var minHeight: CGFloat
+    @Binding var textHeight: CGFloat
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -20,16 +20,15 @@ struct CustomTextEditor: UIViewRepresentable {
         let textView = UITextView()
         textView.delegate = context.coordinator
         textView.isScrollEnabled = false
+        textView.textColor = .black
         textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.backgroundColor = UIColor.clear
-       // textView.text = text.count > 0 ? text : placeholder
-        textView.textColor = text.count == 0 ? .gray : .black
+        textView.backgroundColor = UIColor.white
         textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textView
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        if uiView.text != text && uiView.text != placeholder {
+        if uiView.text != text {
             uiView.text = text
         }
         CustomTextEditor.recalculateHeight(view: uiView, result: context.coordinator)
@@ -40,20 +39,6 @@ struct CustomTextEditor: UIViewRepresentable {
         
         init(_ parent: CustomTextEditor) {
             self.parent = parent
-        }
-        
-        func textViewDidBeginEditing(_ textView: UITextView) {
-            if textView.textColor == UIColor.placeholderText {
-                textView.text = nil
-                textView.textColor = UIColor.label
-            }
-        }
-        
-        func textViewDidEndEditing(_ textView: UITextView) {
-            if textView.text.isEmpty {
-                textView.text = parent.placeholder
-                textView.textColor = UIColor.placeholderText
-            }
         }
         
         func textViewDidChange(_ textView: UITextView) {
@@ -72,41 +57,49 @@ struct CustomTextEditor: UIViewRepresentable {
             }
         }
     }
-    
-    @Binding var textHeight: CGFloat
 }
 
 struct TextEditorWithPlaceholder: View {
     @Binding var text: String
     var placeholder: String
     @State private var textHeight: CGFloat = 40 // initial height
+    @FocusState private var isFocused: Bool
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            CustomTextEditor(text: $text, placeholder: placeholder,
-                             minHeight: 40, textHeight: $textHeight)
-                .frame(minHeight: textHeight, maxHeight: textHeight)
-                .padding(4)
-            
-            if text.isEmpty {
+            if text.isEmpty && !isFocused {
                 Text(placeholder)
                     .foregroundColor(.gray)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 12)
+                    .onTapGesture {
+                        isFocused = true
+                    }
             }
+            
+            CustomTextEditor(text: $text, minHeight: 40, textHeight: $textHeight)
+                .frame(minHeight: textHeight, maxHeight: textHeight)
+                .padding(4)
+                .focused($isFocused)
+                .onTapGesture {
+                    isFocused = true
+                }
         }
         .padding(8)
-        .background(Color.white)
-        .overlay(
-                    CustomBorder(topWidth: 1,
-                                 bottomWidth: 4,
-                                 sideWidth: 1,
-                                 cornerRadius: 0,
-                                 color: .black)
-                )
+        .background(
+//            Rectangle()
+//                .fill(Color.white)
+//                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+//                .frame(height: textHeight + 16) // Adjust the height to match the text editor's height
+            CustomBorder(topWidth: 1, bottomWidth: 3, 
+                         sideWidth: 1, cornerRadius: 0, color: .black)
+        )
+        .background(.white)
+        
         .padding(.horizontal)
     }
 }
+
 
 struct CustomBorder: View {
     var topWidth: CGFloat

@@ -41,7 +41,7 @@ struct TaskView: View {
                             .frame(width: 85, height: 40) // Fixed width
                             .font(.system(size: 10))
                     } else {
-                        TextField("Type here", text: $customText)
+                        TextField("Start Timer", text: $customText)
                             .foregroundColor(Color(hex: CustomColors.black))
                             .padding(.horizontal) // Add horizontal padding
                             .frame(width: 85, height: 40) // Fixed width
@@ -94,7 +94,8 @@ struct TaskView: View {
                 }
             }
         }
-        .padding(8)
+        .frame(width: UIScreen.width * 0.9, alignment: .center)
+        .padding(20)
         
         
     }

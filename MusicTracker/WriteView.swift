@@ -32,26 +32,25 @@ struct WriteView: View {
                                     Rectangle()
                                         .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
                                         .frame(width: UIScreen.width * 0.9, alignment: .center)
-                                        .offset(y: -25)
+                                        //.offset(y: -25)
                                         .zIndex(0)
                                     
                                     VStack {
                                         // Song Title Text Editor
                                         TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "Type your song...")
                                             .frame(width: UIScreen.width * 0.84)
-                                        
+                                            .padding(20)
                                         // Feedback Text Editor
                                         TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Type your practice...")
                                             .frame(width: UIScreen.width * 0.84)
-                                        
                                         // Notes Text Editor
                                         TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Type your feedback...")
                                             .frame(width: UIScreen.width * 0.84)
+                                            .padding(20)
                                         
                                     }
-                                    .padding(8)
+                                    
                                 }
-                                .padding()
                                 .frame(maxWidth: .infinity, alignment: .center)
                             }
                         }
