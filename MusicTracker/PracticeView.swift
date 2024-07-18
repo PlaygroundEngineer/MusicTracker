@@ -40,7 +40,7 @@ struct PracticeView: View {
                                         NewCardView(isShowingWriteView: $isShowingWriteView)
                                         
                                         ForEach(Array(leftEntries.enumerated()), id: \.element.id) { index, entry in
-                                            NavigationLink(destination: WriteView(entry: entry).environmentObject(entryManager)) {
+                                            NavigationLink(destination: PracticeDetailView(entry: entry, entryManager: entryManager)) {
                                                 PracticeCardView(entry: entry, entryManager: entryManager, index: index)
                                                 //WriteView(entry: entry).environmentObject(entryManager)
                                             }

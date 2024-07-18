@@ -1,10 +1,3 @@
-//
-//  PracticeDetailViewNew.swift
-//  MusicTracker
-//
-//  Created by Mekhala Vithala on 7/11/24.
-//
-
 import SwiftUI
 import UIKit
 
@@ -15,7 +8,8 @@ struct CustomPracticeTextEditor: UIViewRepresentable {
     var font: UIFont
     var textColor: UIColor
     var backgroundColor: UIColor
-    var onSave: () -> Void
+    var onSave: () -> Void = {}
+    var minHeight: CGFloat
     
     class Coordinator: NSObject, UITextViewDelegate {
         var parent: CustomPracticeTextEditor
@@ -26,6 +20,7 @@ struct CustomPracticeTextEditor: UIViewRepresentable {
         
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
+            CustomPracticeTextEditor.recalculateHeight(view: textView, result: self)
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
@@ -56,10 +51,11 @@ struct CustomPracticeTextEditor: UIViewRepresentable {
         textView.font = font
         textView.textColor = textColor
         textView.backgroundColor = backgroundColor
-        textView.isScrollEnabled = true
+        textView.isScrollEnabled = false
         textView.isEditable = true
-        textView.isUserInteractionEnabled = true
+        //textView.isUserInteractionEnabled = true
         textView.returnKeyType = .done
+        textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return textView
     }
     
@@ -68,7 +64,21 @@ struct CustomPracticeTextEditor: UIViewRepresentable {
         if isEditing {
             uiView.becomeFirstResponder()
         }
+        CustomPracticeTextEditor.recalculateHeight(view: uiView, result: context.coordinator)
     }
+    
+    static func recalculateHeight(view: UIView, result: Coordinator) {
+        DispatchQueue.main.async {
+            let newSize = view.sizeThatFits(CGSize(width: view.frame.size.width, height: CGFloat.greatestFiniteMagnitude))
+            if result.parent.minHeight > newSize.height {
+                result.parent.textHeight = result.parent.minHeight
+            } else {
+                result.parent.textHeight = newSize.height
+            }
+        }
+    }
+    
+    @Binding var textHeight: CGFloat
 }
 
 struct EditableTextView: View {
@@ -80,6 +90,7 @@ struct EditableTextView: View {
     var backgroundColor: UIColor
     var height: CGFloat
     var onSave: () -> Void
+    @State private var textHeight: CGFloat = 40
     
     var body: some View {
         VStack {
@@ -90,9 +101,11 @@ struct EditableTextView: View {
                 font: font,
                 textColor: textColor,
                 backgroundColor: backgroundColor,
-                onSave: onSave
+                onSave: onSave,
+                minHeight: 40,
+                textHeight: $textHeight
             )
-            .frame(height: height)
+            .frame(minHeight: textHeight, maxHeight: textHeight)
             .background(Color(backgroundColor))
             .cornerRadius(8)
             .padding([.leading, .trailing])
@@ -111,93 +124,105 @@ struct PracticeDetailView: View {
     @State private var editableNotes: String = ""
     
     var body: some View {
-        VStack(alignment: .leading) {
-            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
-                GeometryReader { geometry in
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: geometry.size.height * 0.5)
-                        .frame(width: geometry.size.width * 0.9)
-                        .clipped()
-                        .cornerRadius(5.0)
+        Color(hex: entry.colorHex)
+                .edgesIgnoringSafeArea(.all)
+                .overlay(
+                    ScrollView {
+                        VStack(alignment: .leading) {
+                            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                               // GeometryReader { geometry in
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        //.frame(height: geometry.size.height * 0.5)
+                                        //.frame(width: geometry.size.width * 0.9)
+                                        .frame(maxWidth: .infinity)
+                                        .clipped()
+                                        .cornerRadius(5.0)
+                                        .frame(alignment: .center)
+                                        .padding()
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 5.0)
+                                                .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
+                                              .frame(alignment: .center)
+                                                .padding()
+                                        )
+                                //}
+                               .frame(alignment: .center)
+                            }
+                            
+                            Spacer()
+                            Spacer()
+                            
+                            EditableTextView(
+                                text: $editableTitle,
+                                placeholder: "...",
+                                font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                                textColor: UIColor(Color(hex: CustomColors.black)),
+                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                                height: 50,
+                                onSave: endEditingTitle
+                            )
+                            .padding([.top])
+                            
+                            HStack {
+                                Image(systemName: "clock")
+                                Text("\(entry.duration) seconds")
+                                Spacer()
+                                Text(entry.date, style: .date)
+                            }
+                            .font(.subheadline)
+                            .foregroundColor(Color(hex: CustomColors.gray, opacity: 1))
+                            .padding([.leading, .trailing])
+                            
+                            Text("What did I practice?")
+                                .font(.headline)
+                                .foregroundColor(Color(hex: CustomColors.black))
+                                .padding([.leading, .trailing, .top])
+                            
+                            EditableTextView(
+                                text: $editableNotes,
+                                placeholder: "...",
+                                font: UIFont.systemFont(ofSize: 17),
+                                textColor: UIColor(Color(hex: CustomColors.gray)),
+                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                                height: 150,
+                                onSave: endEditingNotes
+                            )
+                            
+                            Spacer()
+                            
+                            Text("What feedback do I have?")
+                                .font(.headline)
+                                .foregroundColor(Color(hex: CustomColors.black))
+                                .padding([.leading, .trailing, .top])
+                            
+                            EditableTextView(
+                                text: $editableFeedback,
+                                placeholder: "...",
+                                font: UIFont.systemFont(ofSize: 17),
+                                textColor: UIColor(Color(hex: CustomColors.gray)),
+                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                                height: 150,
+                                onSave: endEditingFeedback
+                            )
+                            
+                            Spacer()
+                        }
+                        .frame(alignment: .center)
                         .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5.0)
-                                .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
-                                .frame(height: geometry.size.height * 0.5)
-                                .frame(width: geometry.size.width * 0.9)
-                                .padding()
-                        )
-                }
-            }
-            
-            EditableTextView(
-                text: $editableTitle,
-                placeholder: "...",
-                font: UIFont.systemFont(ofSize: 24, weight: .bold),
-                textColor: UIColor(Color(hex: CustomColors.black)),
-                backgroundColor: .clear,
-                height: 50,
-                onSave: endEditingTitle
-            )
-            
-            HStack {
-                Image(systemName: "clock")
-                Text("\(entry.duration) seconds")
-                Spacer()
-                Text(entry.date, style: .date)
-            }
-            .font(.subheadline)
-            .foregroundColor(Color(hex: CustomColors.gray, opacity: 1))
-            .padding([.leading, .trailing])
-            
-            Text("What did I practice?")
-                .font(.headline)
-                .foregroundColor(Color(hex: CustomColors.black))
-                .padding([.leading, .trailing, .top])
-            
-            EditableTextView(
-                text: $editableNotes,
-                placeholder: "...",
-                font: UIFont.systemFont(ofSize: 17),
-                textColor: UIColor(Color(hex: CustomColors.gray)),
-                backgroundColor: UIColor(Color.gray.opacity(0.2)),
-                height: 150,
-                onSave: endEditingNotes
-            )
-            
-            Spacer()
-            
-            Text("What feedback do I have?")
-                .font(.headline)
-                .foregroundColor(Color(hex: CustomColors.black))
-                .padding([.leading, .trailing, .top])
-            
-            EditableTextView(
-                text: $editableFeedback,
-                placeholder: "...",
-                font: UIFont.systemFont(ofSize: 17),
-                textColor: UIColor(Color(hex: CustomColors.gray)),
-                backgroundColor: UIColor(Color.gray.opacity(0.2)),
-                height: 150,
-                onSave: endEditingFeedback
-            )
-            
-            Spacer()
-        }
-        .padding()
-        .background(Color(hex: entry.colorHex))
-        .onAppear {
-            editableFeedback = entry.feedback
-            editableNotes = entry.notes
-            editableTitle = entry.songTitle
-        }
-        .onDisappear {
-            endEditingTitle()
-            endEditingFeedback()
-            endEditingNotes()
-        }
+                        .onAppear {
+                            editableFeedback = entry.feedback
+                            editableNotes = entry.notes
+                            editableTitle = entry.songTitle
+                        }
+                        .onDisappear {
+                            endEditingTitle()
+                            endEditingFeedback()
+                            endEditingNotes()
+                        }
+                    }
+                )
     }
     
     private func endEditingTitle() {
