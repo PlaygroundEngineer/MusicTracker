@@ -125,104 +125,103 @@ struct PracticeDetailView: View {
     
     var body: some View {
         Color(hex: entry.colorHex)
-                .edgesIgnoringSafeArea(.all)
-                .overlay(
-                    ScrollView {
-                        VStack(alignment: .leading) {
-                            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
-                               // GeometryReader { geometry in
-                                    Image(uiImage: uiImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        //.frame(height: geometry.size.height * 0.5)
-                                        //.frame(width: geometry.size.width * 0.9)
-                                        .frame(maxWidth: .infinity)
-                                        .clipped()
-                                        .cornerRadius(5.0)
+            .edgesIgnoringSafeArea(.all)
+            .overlay(
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                            // GeometryReader { geometry in
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                            //.frame(height: geometry.size.height * 0.5)
+                            //.frame(width: geometry.size.width * 0.9)
+                                .frame(maxWidth: .infinity)
+                                .clipped()
+                                .cornerRadius(5.0)
+                                .frame(alignment: .center)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5.0)
+                                        .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
                                         .frame(alignment: .center)
                                         .padding()
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 5.0)
-                                                .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
-                                              .frame(alignment: .center)
-                                                .padding()
-                                        )
-                                //}
-                               .frame(alignment: .center)
-                            }
-                            
-                            Spacer()
-                            Spacer()
-                            
-                            EditableTextView(
-                                text: $editableTitle,
-                                placeholder: "...",
-                                font: UIFont.systemFont(ofSize: 24, weight: .bold),
-                                textColor: UIColor(Color(hex: CustomColors.black)),
-                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
-                                height: 50,
-                                onSave: endEditingTitle
-                            )
-                            .padding([.top])
-                            
-                            HStack {
-                                Image(systemName: "clock")
-                                Text("\(entry.duration) seconds")
-                                Spacer()
-                                Text(entry.date, style: .date)
-                            }
-                            .font(.subheadline)
-                            .foregroundColor(Color(hex: CustomColors.gray, opacity: 1))
-                            .padding([.leading, .trailing])
-                            
-                            Text("What did I practice?")
-                                .font(.headline)
-                                .foregroundColor(Color(hex: CustomColors.black))
-                                .padding([.leading, .trailing, .top])
-                            
-                            EditableTextView(
-                                text: $editableNotes,
-                                placeholder: "...",
-                                font: UIFont.systemFont(ofSize: 17),
-                                textColor: UIColor(Color(hex: CustomColors.gray)),
-                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
-                                height: 150,
-                                onSave: endEditingNotes
-                            )
-                            
-                            Spacer()
-                            
-                            Text("What feedback do I have?")
-                                .font(.headline)
-                                .foregroundColor(Color(hex: CustomColors.black))
-                                .padding([.leading, .trailing, .top])
-                            
-                            EditableTextView(
-                                text: $editableFeedback,
-                                placeholder: "...",
-                                font: UIFont.systemFont(ofSize: 17),
-                                textColor: UIColor(Color(hex: CustomColors.gray)),
-                                backgroundColor: UIColor(Color.gray.opacity(0.05)),
-                                height: 150,
-                                onSave: endEditingFeedback
-                            )
-                            
-                            Spacer()
+                                )
+                            //}
+                                .frame(alignment: .center)
                         }
-                        .frame(alignment: .center)
-                        .padding()
-                        .onAppear {
-                            editableFeedback = entry.feedback
-                            editableNotes = entry.notes
-                            editableTitle = entry.songTitle
+                        
+                        Spacer()
+                        
+                        EditableTextView(
+                            text: $editableTitle,
+                            placeholder: "...",
+                            font: UIFont.systemFont(ofSize: 24, weight: .bold),
+                            textColor: UIColor(Color(hex: CustomColors.black)),
+                            backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                            height: 50,
+                            onSave: endEditingTitle
+                        )
+                        .padding([.top])
+                        
+                        HStack {
+                            Image(systemName: "clock")
+                            Text("\(entry.duration) seconds")
+                            Spacer()
+                            Text(entry.date, style: .date)
                         }
-                        .onDisappear {
-                            endEditingTitle()
-                            endEditingFeedback()
-                            endEditingNotes()
-                        }
+                        .font(.subheadline)
+                        .foregroundColor(Color(hex: CustomColors.gray, opacity: 1))
+                        .padding([.leading, .trailing])
+                        
+                        Text("What did I practice?")
+                            .font(.headline)
+                            .foregroundColor(Color(hex: CustomColors.black))
+                            .padding([.leading, .trailing, .top])
+                        
+                        EditableTextView(
+                            text: $editableNotes,
+                            placeholder: "...",
+                            font: UIFont.systemFont(ofSize: 17),
+                            textColor: UIColor(Color(hex: CustomColors.gray)),
+                            backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                            height: 150,
+                            onSave: endEditingNotes
+                        )
+                        
+                        Spacer()
+                        
+                        Text("What feedback do I have?")
+                            .font(.headline)
+                            .foregroundColor(Color(hex: CustomColors.black))
+                            .padding([.leading, .trailing, .top])
+                        
+                        EditableTextView(
+                            text: $editableFeedback,
+                            placeholder: "...",
+                            font: UIFont.systemFont(ofSize: 17),
+                            textColor: UIColor(Color(hex: CustomColors.gray)),
+                            backgroundColor: UIColor(Color.gray.opacity(0.05)),
+                            height: 150,
+                            onSave: endEditingFeedback
+                        )
+                        
+                        Spacer()
                     }
-                )
+                    .frame(alignment: .center)
+                    .padding()
+                    .onAppear {
+                        editableFeedback = entry.feedback
+                        editableNotes = entry.notes
+                        editableTitle = entry.songTitle
+                    }
+                    .onDisappear {
+                        endEditingTitle()
+                        endEditingFeedback()
+                        endEditingNotes()
+                    }
+                }
+            )
     }
     
     private func endEditingTitle() {
