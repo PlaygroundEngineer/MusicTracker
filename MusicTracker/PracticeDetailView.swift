@@ -130,12 +130,9 @@ struct PracticeDetailView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
-                            // GeometryReader { geometry in
                             Image(uiImage: uiImage)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                            //.frame(height: geometry.size.height * 0.5)
-                            //.frame(width: geometry.size.width * 0.9)
                                 .frame(maxWidth: .infinity)
                                 .clipped()
                                 .cornerRadius(5.0)
@@ -147,7 +144,6 @@ struct PracticeDetailView: View {
                                         .frame(alignment: .center)
                                         .padding()
                                 )
-                            //}
                                 .frame(alignment: .center)
                         }
                         
@@ -174,7 +170,7 @@ struct PracticeDetailView: View {
                         .foregroundColor(Color(hex: CustomColors.gray, opacity: 1))
                         .padding([.leading, .trailing])
                         
-                        Text("What did I practice?")
+                        Text("How would you describe your achievement?")
                             .font(.headline)
                             .foregroundColor(Color(hex: CustomColors.black))
                             .padding([.leading, .trailing, .top])
@@ -191,7 +187,7 @@ struct PracticeDetailView: View {
                         
                         Spacer()
                         
-                        Text("What feedback do I have?")
+                        Text("What feedback or notes do you have on your achievement?")
                             .font(.headline)
                             .foregroundColor(Color(hex: CustomColors.black))
                             .padding([.leading, .trailing, .top])
