@@ -144,6 +144,101 @@
             endingLineNumber = "72"
             landmarkName = "body"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "BC55D3C9-5069-4341-A3A5-44628DF13653 - 3e16e908513fd668"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0&gt;, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in MusicTracker.TextEditorWithPlaceholder.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "1025">
+               </Location>
+               <Location
+                  uuid = "BC55D3C9-5069-4341-A3A5-44628DF13653 - 4ab12acefa157b8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.TupleView&lt;(SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;)&gt; in MusicTracker.CustomBorder.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "2199">
+               </Location>
+               <Location
+                  uuid = "BC55D3C9-5069-4341-A3A5-44628DF13653 - d5c4f113e186c09b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (inout SwiftUI.Path) -&gt; () in closure #1 (SwiftUI.GeometryProxy) -&gt; SwiftUI.TupleView&lt;(SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;, SwiftUI.StrokeShapeView&lt;SwiftUI.Path, SwiftUI.Color, SwiftUI.EmptyView&gt;)&gt; in MusicTracker.CustomBorder.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/CustomTextEditor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "63">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79CCE0C5-770D-4AE8-A015-4CF6579D32B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicTracker/TaskView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "79CCE0C5-770D-4AE8-A015-4CF6579D32B2 - 4a4ac36fb463c124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;&gt;&gt;)&gt; in MusicTracker.TaskView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/TaskView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "5684">
+               </Location>
+               <Location
+                  uuid = "79CCE0C5-770D-4AE8-A015-4CF6579D32B2 - 4a4ac36fb463c124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt; in closure #2 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.font(Swift.Optional&lt;SwiftUI.Font&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;, SwiftUI.ZStack&lt;SwiftUI.Button&lt;SwiftUI.ZStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Text)&gt;&gt;&gt;&gt;)&gt; in MusicTracker.TaskView.body.getter : some"
+                  moduleName = "MusicTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekhalavithala/Desktop/2023-24/Music%20Tracker%20Versions/July9-2024/MusicTracker/MusicTracker/TaskView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "5380">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

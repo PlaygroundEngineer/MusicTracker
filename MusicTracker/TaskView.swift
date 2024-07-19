@@ -41,8 +41,8 @@ struct TaskView: View {
                             .frame(width: 85, height: 40) // Fixed width
                             .font(.system(size: 10))
                     } else {
-                        TextField("Start Timer", text: $customText)
-                            .foregroundColor(Color(hex: CustomColors.black))
+                        Text("Start Timer")
+                            .foregroundColor(Color(hex: CustomColors.gray))
                             .padding(.horizontal) // Add horizontal padding
                             .frame(width: 85, height: 40) // Fixed width
                             .font(.system(size: 10))
