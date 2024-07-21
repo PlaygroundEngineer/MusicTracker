@@ -5,6 +5,7 @@ struct TextEditorWithPlaceholder: View {
     @State private var isEditing: Bool = false
     var placeholder: String
     @State private var textHeight: CGFloat = 40 // initial height
+    @State var minHeight: CGFloat
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -19,8 +20,8 @@ struct TextEditorWithPlaceholder: View {
                     }
             }
             
-            CustomPracticeTextEditor(text: $text, isEditing: $isEditing, placeholder: placeholder, font: UIFont.preferredFont(forTextStyle: .body), textColor: .black, backgroundColor: UIColor.clear, minHeight: 40, textHeight: $textHeight)
-                .frame(minHeight: textHeight, maxHeight: textHeight)
+            CustomPracticeTextEditor(text: $text, isEditing: $isEditing, placeholder: placeholder, font: UIFont.preferredFont(forTextStyle: .body), textColor: .black, backgroundColor: UIColor.clear, minHeight: minHeight, textHeight: $textHeight)
+                .frame(minHeight: minHeight, maxHeight: textHeight)
                 .padding(4)
                 .focused($isFocused)
                 .onTapGesture {
@@ -29,10 +30,6 @@ struct TextEditorWithPlaceholder: View {
         }
         .padding(8)
         .background(
-            //            Rectangle()
-            //                .fill(Color.white)
-            //                .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-            //                .frame(height: textHeight + 16) // Adjust the height to match the text editor's height
             CustomBorder(topWidth: 1, bottomWidth: 3, 
                          sideWidth: 1, cornerRadius: 0, color: .black)
         )
