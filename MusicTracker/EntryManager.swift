@@ -12,7 +12,7 @@ public struct PracticeEntry: Identifiable, Codable {
     public var id = UUID()
     var imageData: Data?
     var date = Date()
-    var duration: Int
+    var duration: String
     var songTitle: String
     var feedback: String
     var notes: String

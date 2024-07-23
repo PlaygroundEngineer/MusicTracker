@@ -40,4 +40,5 @@ struct CustomColors {
     static let yellow = "E7DD7F"
     static let magenta = "DBA3C1"
     static let slate = "8CAAC8"
+    static let white = "FFFFFF"
 }
