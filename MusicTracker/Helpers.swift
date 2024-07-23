@@ -31,7 +31,7 @@ extension Color {
 
 struct CustomColors {
     static let black = "201E1D"
-    static let gray = "5A5C5A"
+    static let gray = "343534"
     static let cream = "ECEBE4"
     static let tan = "DED4BA"
     static let green = "BDCE87"
