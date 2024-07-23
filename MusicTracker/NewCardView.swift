@@ -1,4 +1,4 @@
-/* import SwiftUI
+/*import SwiftUI
 struct NewCardView: View {
     @Binding var isShowingWriteView: Bool
     
@@ -32,7 +32,7 @@ struct NewCardView: View {
         .background(Color(hex: CustomColors.tan))
         .cornerRadius(0)
         .overlay(
-            RoundedRectangle(cornerRadius: 0)
+            RoundedRectangle(cornerRadius: 100)
                 .stroke(Color(hex: CustomColors.black), lineWidth: 1.5)
                 .overlay(
                     VStack {

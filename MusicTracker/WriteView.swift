@@ -4,7 +4,7 @@ import Combine
 struct WriteView: View {
     @State var entry: PracticeEntry
     @EnvironmentObject var entryManager: EntryManager
-    // @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
+   // @State private var newEntry = PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
     
     var body: some View {
         Color(hex: CustomColors.cream, opacity: 1)
@@ -32,19 +32,19 @@ struct WriteView: View {
                                     Rectangle()
                                         .foregroundColor(Color(hex: CustomColors.tan, opacity: 1))
                                         .frame(width: UIScreen.width * 0.9, alignment: .center)
-                                    //.offset(y: -25)
+                                        //.offset(y: -25)
                                         .zIndex(0)
                                     
                                     VStack {
                                         // Song Title Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "Type the title of your achievement...", minHeight: UIScreen.height * 0.03)
+                                        TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "Type your song...")
                                             .frame(width: UIScreen.width * 0.84)
                                             .padding(20)
                                         // Feedback Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Describe your achievement...", minHeight: UIScreen.height * 0.09)
+                                        TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Type your practice...")
                                             .frame(width: UIScreen.width * 0.84)
                                         // Notes Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Provide notes on your achievement...", minHeight: UIScreen.height * 0.09)
+                                        TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Type your feedback...")
                                             .frame(width: UIScreen.width * 0.84)
                                             .padding(20)
                                         
@@ -56,9 +56,9 @@ struct WriteView: View {
                         }
                     }
                 }
-                    .onTapGesture {
-                        self.hideKeyboard()
-                    }
+                .onTapGesture {
+                    self.hideKeyboard()
+                }
             )
     }
 }
@@ -69,3 +69,25 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+
+//struct TextEditorWithPlaceholder: View {
+//    @Binding var text: String
+//    var placeholder: String
+//
+//    var body: some View {
+//        ZStack(alignment: .bottom) {
+//            CustomTextEditor(text: $text, placeholder: placeholder)
+//                .background(
+//                    Rectangle()
+//                        .foregroundColor(Color(hex: CustomColors.cream, opacity: 1))
+//                )
+//                .border(Color(hex: CustomColors.black, opacity: 1), width: 1)
+//
+//            Rectangle()
+//                .frame(width: UIScreen.width * 0.84, height: 5)
+//                .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
+//        }
+//        .padding(8)
+//    }
+//}
