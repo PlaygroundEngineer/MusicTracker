@@ -8,7 +8,6 @@ struct TaskView: View {
     @State private var timer: Timer? = nil
     @State private var isPlaying: Bool = false
     @State private var elapsedTime: TimeInterval = 0
-    @State private var customText: String = ""
     
     var body: some View {
         HStack {
@@ -21,7 +20,7 @@ struct TaskView: View {
                 }) {
                     Image(systemName: selectedImage == nil ? "camera" : "checkmark")
                         .font(.system(size: 10))
-                        .foregroundColor( selectedImage == nil ? Color(hex: CustomColors.cream) : Color(hex: CustomColors.black))
+                        .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.cream) : Color(hex: CustomColors.black))
                 }
                 .padding(4)
                 .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
@@ -34,20 +33,11 @@ struct TaskView: View {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: 110, height: 25)
                         .foregroundColor(Color.white)
-                    if isPlaying {
-                        Text("\(Int(elapsedTime)) seconds")
-                            .foregroundColor(Color(hex: CustomColors.black))
-                            .padding(.horizontal) // Add horizontal padding
-                            .frame(width: 85, height: 40) // Fixed width
-                            .font(.system(size: 10))
-                    } else {
-                        Text("Start Timer")
-                            .foregroundColor(Color(hex: CustomColors.gray))
-                            .padding(.horizontal) // Add horizontal padding
-                            .frame(width: 85, height: 40) // Fixed width
-                            .font(.system(size: 10))
-                        
-                    }
+                    Text(formatElapsedTime(elapsedTime))
+                        .foregroundColor(Color(hex: CustomColors.black))
+                        .padding(.horizontal) // Add horizontal padding
+                        .frame(width: 85, height: 40) // Fixed width
+                        .font(.system(size: 10))
                 }
                 ZStack {
                     Circle()
@@ -74,8 +64,7 @@ struct TaskView: View {
                     newEntry.duration = Int(elapsedTime)
                     newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
                     newEntry.colorHex = entryManager.getSequentialColor()
-                    entryManager.entries
-                        .append(newEntry)
+                    entryManager.entries.append(newEntry)
                     entryManager.saveEntriesToUserDefaults()
                     selectedImage = nil
                     elapsedTime = 0
@@ -96,8 +85,6 @@ struct TaskView: View {
         }
         .frame(width: UIScreen.width * 0.9, alignment: .center)
         .padding(20)
-        
-        
     }
     
     func loadImage() {
@@ -118,4 +105,12 @@ struct TaskView: View {
         timer?.invalidate()
         timer = nil
     }
+    
+    func formatElapsedTime(_ elapsedTime: TimeInterval) -> String {
+        let hours = Int(elapsedTime) / 3600
+        let minutes = (Int(elapsedTime) % 3600) / 60
+        let seconds = Int(elapsedTime) % 60
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
 }
+
