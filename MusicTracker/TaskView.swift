@@ -14,13 +14,13 @@ struct TaskView: View {
             ZStack {
                 Circle()
                     .frame(width: 25)
-                    .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.black) : Color(hex: CustomColors.cream))
+                    .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.black) : Color(hex: CustomColors.white))
                 Button(action: {
                     isImagePickerPresented.toggle()
                 }) {
                     Image(systemName: selectedImage == nil ? "camera" : "checkmark")
                         .font(.system(size: 10))
-                        .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.cream) : Color(hex: CustomColors.black))
+                        .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.white) : Color(hex: CustomColors.black))
                 }
                 .padding(4)
                 .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
@@ -32,7 +32,7 @@ struct TaskView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: 25)
                         .frame(width: 110, height: 25)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color(hex: CustomColors.white))
                     Text(formatElapsedTime(elapsedTime))
                         .foregroundColor(Color(hex: CustomColors.black))
                         .padding(.horizontal) // Add horizontal padding
@@ -54,21 +54,22 @@ struct TaskView: View {
                     }) {
                         Image(systemName: isPlaying ? "stop.fill" : "play.fill")
                             .font(.system(size: 10))
-                            .foregroundColor(Color(hex: CustomColors.cream))
+                            .foregroundColor(Color(hex: CustomColors.white))
                     }
                 }
             }
             
             ZStack {
                 Button {
-                    newEntry.duration = Int(elapsedTime)
+                    newEntry.duration = formatElapsedTime(elapsedTime)
                     newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
                     newEntry.colorHex = entryManager.getSequentialColor()
                     entryManager.entries.append(newEntry)
                     entryManager.saveEntriesToUserDefaults()
                     selectedImage = nil
                     elapsedTime = 0
-                    newEntry = PracticeEntry(imageData: nil, duration: 0, songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                    stopTimer()
+                    newEntry = PracticeEntry(imageData: nil, duration: "", songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
                 } label: {
                     ZStack {
                         Rectangle()
@@ -78,7 +79,7 @@ struct TaskView: View {
                         
                         Text("Add ->")
                             .font(.system(size: 10))
-                            .foregroundColor(Color(hex: CustomColors.cream))
+                            .foregroundColor(Color(hex: CustomColors.white))
                     }
                 }
             }
