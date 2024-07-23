@@ -56,7 +56,7 @@ struct PracticeCardView: View {
                         .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                     
-                    Text("\(entry.duration) seconds")
+                    Text(entry.duration)
                         .foregroundColor(Color(hex: CustomColors.black))
                         .font(.system(size: 10))
                     
