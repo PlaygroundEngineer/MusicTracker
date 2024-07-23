@@ -160,7 +160,7 @@ struct PracticeDetailView: View {
                         
                         HStack {
                             Image(systemName: "clock")
-                            Text("\(entry.duration) seconds")
+                            Text(entry.duration)
                             Spacer()
                             Text(entry.date, style: .date)
                         }
