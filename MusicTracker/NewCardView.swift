@@ -47,5 +47,6 @@ struct NewCardView: View {
         .padding(.bottom, 10)
     }
 }
+
 */
 
