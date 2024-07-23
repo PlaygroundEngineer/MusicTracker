@@ -5,7 +5,7 @@ struct PracticeView: View {
     @State private var newEntry = PracticeEntry(
         imageData: nil,
         date: Date(),
-        duration: 0,
+        duration: "",
         songTitle: "",
         feedback: "",
         notes: "",
@@ -63,7 +63,7 @@ struct PracticeView: View {
                     }
                     .background(
                         NavigationLink(destination: WriteView(
-                            entry: PracticeEntry(imageData: nil, date: Date(), duration: 0, songTitle: "", feedback: "", notes: "", colorHex: "")
+                            entry: PracticeEntry(imageData: nil, date: Date(), duration: "", songTitle: "", feedback: "", notes: "", colorHex: "")
                         ).environmentObject(entryManager), isActive: $isShowingWriteView) {
                             EmptyView()
                         }
