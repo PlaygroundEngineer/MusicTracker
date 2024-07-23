@@ -1,4 +1,4 @@
- import SwiftUI
+/* import SwiftUI
 struct NewCardView: View {
     @Binding var isShowingWriteView: Bool
     
@@ -47,5 +47,5 @@ struct NewCardView: View {
         .padding(.bottom, 10)
     }
 }
-
+*/
 
