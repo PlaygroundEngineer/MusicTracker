@@ -10,7 +10,7 @@ struct TaskView: View {
     @State private var elapsedTime: TimeInterval = 0
     
     var body: some View {
-        HStack(spacing: 20) { // Adjusted spacing for better proportion
+        HStack(spacing: 10) { // Adjusted spacing for better proportion
             // Image Picker Section
             ZStack {
                 Circle()
@@ -90,7 +90,7 @@ struct TaskView: View {
             }
         }
         .frame(width: UIScreen.width * 0.9, alignment: .center) // Adjusted width for proportion
-        .padding(.horizontal, 20)
+        .padding(.vertical, 40)
     }
     
     func loadImage() {
