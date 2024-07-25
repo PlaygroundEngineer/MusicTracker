@@ -10,38 +10,40 @@ struct TaskView: View {
     @State private var elapsedTime: TimeInterval = 0
     
     var body: some View {
-        HStack {
+        HStack(spacing: 20) { // Adjusted spacing for better proportion
+            // Image Picker Section
             ZStack {
                 Circle()
-                    .frame(width: 25)
+                    .frame(width: 40) // Increased size
                     .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.black) : Color(hex: CustomColors.white))
                 Button(action: {
                     isImagePickerPresented.toggle()
                 }) {
                     Image(systemName: selectedImage == nil ? "camera" : "checkmark")
-                        .font(.system(size: 10))
+                        .font(.system(size: 24)) // Increased font size
                         .foregroundColor(selectedImage == nil ? Color(hex: CustomColors.white) : Color(hex: CustomColors.black))
                 }
-                .padding(4)
+                .padding(8)
                 .sheet(isPresented: $isImagePickerPresented, onDismiss: loadImage) {
                     ImagePicker(selectedImage: $selectedImage)
                 }
             }
             
+            // Timer Section
             ZStack(alignment: .leading) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .frame(width: 110, height: 25)
+                    RoundedRectangle(cornerRadius: 30) // Increased corner radius
+                        .frame(width: 170, height: 40) // Increased size
                         .foregroundColor(Color(hex: CustomColors.white))
                     Text(formatElapsedTime(elapsedTime))
                         .foregroundColor(Color(hex: CustomColors.black))
-                        .padding(.horizontal) // Add horizontal padding
-                        .frame(width: 85, height: 40) // Fixed width
-                        .font(.system(size: 10))
+                        .padding(.horizontal)
+                        .frame(width: 170, height: 40, alignment: .center) // Increased size
+                        .font(.system(size: 20)) // Increased font size
                 }
                 ZStack {
                     Circle()
-                        .frame(width: 25)
+                        .frame(width: 40) // Increased size
                         .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
                     
                     Button(action: {
@@ -53,38 +55,41 @@ struct TaskView: View {
                         isPlaying.toggle()
                     }) {
                         Image(systemName: isPlaying ? "stop.fill" : "play.fill")
-                            .font(.system(size: 10))
+                            .font(.system(size: 20)) // Increased font size
                             .foregroundColor(Color(hex: CustomColors.white))
                     }
                 }
             }
             
+            // Add Button Section
             ZStack {
                 Button {
-                    newEntry.duration = formatElapsedTime(elapsedTime)
-                    newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
-                    newEntry.colorHex = entryManager.getSequentialColor()
-                    entryManager.entries.append(newEntry)
-                    entryManager.saveEntriesToUserDefaults()
-                    selectedImage = nil
-                    elapsedTime = 0
-                    stopTimer()
-                    newEntry = PracticeEntry(imageData: nil, duration: "", songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                    if !newEntry.songTitle.isEmpty || !newEntry.notes.isEmpty || !newEntry.feedback.isEmpty {
+                        newEntry.duration = formatElapsedTime(elapsedTime)
+                        newEntry.imageData = selectedImage?.jpegData(compressionQuality: 1.0)
+                        newEntry.colorHex = entryManager.getSequentialColor()
+                        entryManager.entries.append(newEntry)
+                        entryManager.saveEntriesToUserDefaults()
+                        selectedImage = nil
+                        elapsedTime = 0
+                        stopTimer()
+                        newEntry = PracticeEntry(imageData: nil, duration: "", songTitle: "", feedback: "", notes: "", colorHex: entryManager.getSequentialColor())
+                    }
                 } label: {
                     ZStack {
                         Rectangle()
-                            .frame(width: 60, height: 25)
-                            .cornerRadius(25)
+                            .frame(width: 100, height: 40) // Increased size
+                            .cornerRadius(30) // Increased corner radius
                             .foregroundColor(Color(hex: CustomColors.black, opacity: 1))
                         
                         Text("Add ->")
-                            .font(.system(size: 10))
+                            .font(.system(size: 20)) // Increased font size
                             .foregroundColor(Color(hex: CustomColors.white))
                     }
                 }
             }
         }
-        .frame(width: UIScreen.width * 0.9, alignment: .center)
+        .frame(width: UIScreen.width * 0.9, alignment: .center) // Adjusted width for proportion
         .padding(20)
     }
     
