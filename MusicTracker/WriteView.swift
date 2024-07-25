@@ -37,14 +37,14 @@ struct WriteView: View {
                                     
                                     VStack {
                                         // Song Title Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "Type your title...")
+                                        TextEditorWithPlaceholder(text: $entry.songTitle, placeholder: "What do you want to track?")
                                             .frame(width: UIScreen.width * 0.84)
                                             .padding(20)
                                         // Feedback Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Describe your achievement...")
+                                        TextEditorWithPlaceholder(text: $entry.notes, placeholder: "Describe the details.")
                                             .frame(width: UIScreen.width * 0.84)
                                         // Notes Text Editor
-                                        TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Provide notes...")
+                                        TextEditorWithPlaceholder(text: $entry.feedback, placeholder: "Jot down reminders or key takeaways.")
                                             .frame(width: UIScreen.width * 0.84)
                                             .padding(20)
                                         

@@ -24,6 +24,10 @@ class EntryManager: ObservableObject {
     
     var colorIndex: Int = 0
     
+    init() {
+        fetchEntriesFromUserDefaults()
+    }
+    
     func getSequentialColor() -> String {
         let colors: [String] = [
             CustomColors.green,
@@ -57,6 +61,15 @@ class EntryManager: ObservableObject {
         if let index = entries.firstIndex(where: { $0.id == entry.id }) {
             entries[index] = entry
             saveEntriesToUserDefaults()
+        }
+    }
+    
+    func fetchEntriesFromUserDefaults() {
+        if let savedEntriesData = UserDefaults.standard.data(forKey: "practiceEntries") {
+            let decoder = JSONDecoder()
+            if let decodedEntries = try? decoder.decode([PracticeEntry].self, from: savedEntriesData) {
+                entries = decodedEntries
+            }
         }
     }
 }
