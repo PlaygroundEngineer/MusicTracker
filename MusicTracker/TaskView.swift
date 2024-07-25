@@ -90,7 +90,7 @@ struct TaskView: View {
             }
         }
         .frame(width: UIScreen.width * 0.9, alignment: .center) // Adjusted width for proportion
-        .padding(20)
+        .padding(.horizontal, 20)
     }
     
     func loadImage() {
