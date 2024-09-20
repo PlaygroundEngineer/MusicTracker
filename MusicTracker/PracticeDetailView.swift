@@ -1,6 +1,12 @@
 import SwiftUI
 import UIKit
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 struct CustomPracticeTextEditor: UIViewRepresentable {
     @Binding var text: String
     @Binding var isEditing: Bool
@@ -33,10 +39,10 @@ struct CustomPracticeTextEditor: UIViewRepresentable {
         }
         
         func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if text == "\n" {
+            /*if text == "\n" {
                 textView.resignFirstResponder()
                 return false
-            }
+            }*/
             return true
         }
     }
@@ -144,7 +150,6 @@ struct PracticeDetailView: View {
                                         .frame(alignment: .center)
                                         .padding()
                                 )
-                                .frame(alignment: .center)
                         }
                         
                         EditableTextView(
@@ -215,6 +220,11 @@ struct PracticeDetailView: View {
                         endEditingNotes()
                     }
                 }
+                    .gesture(
+                        DragGesture().onChanged { _ in
+                            UIApplication.shared.endEditing() // Dismiss the keyboard when swiping
+                        }
+                    )
             )
     }
     
@@ -236,3 +246,4 @@ struct PracticeDetailView: View {
         entryManager.updateEntry(updatedEntry)
     }
 }
+
